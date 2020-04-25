@@ -16,7 +16,7 @@ wss.on('connection', function connection (client) {
     players[udid] = {
       position: {
         x: parseFloat(x),
-        y: parseFloat(y) + 1,
+        y: parseFloat(y),
         z: parseFloat(z)
       },
       timestamp: Date.now()
