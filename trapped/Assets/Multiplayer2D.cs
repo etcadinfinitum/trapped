@@ -64,9 +64,9 @@ public class Multiplayer2D : MonoBehaviour
                 for (int i = 0; i < otherPlayers.Count; i++)
                 {
                     // using animation
-                    otherPlayers[i].transform.position = Vector3.Lerp(otherPlayers[i].transform.position, data.players[i].position, Time.deltaTime * 10F);
+                    //otherPlayers[i].transform.position = Vector3.Lerp(otherPlayers[i].transform.position, data.players[i].position, Time.deltaTime * 10F);
                     // or without animation
-                    // otherPlayers[i].transform.position = data.players[i].position;
+                    otherPlayers[i].transform.position = data.players[i].position;
                 }
             }
 
