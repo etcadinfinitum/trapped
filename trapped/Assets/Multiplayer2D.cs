@@ -25,8 +25,13 @@ public class Multiplayer2D : MonoBehaviour
     private Vector3 prevPosition;
     private List<GameObject> otherPlayers = new List<GameObject>();
 
+    private GameObject globalController;
+
     IEnumerator Start()
     {
+        // get global controller
+        globalController = GameObject.Find("GlobalController");
+        //globalController.GetComponent<GlobalBehavior>().setTestSet(true);
         // get player
         GameObject player = GameObject.Find("Player");
 
