@@ -31,10 +31,10 @@ public class Multiplayer2D : MonoBehaviour
 
     IEnumerator Start()
     {
-        /*
+        
         // get global controller
         globalController = GameObject.Find("GlobalController");
-        */
+        
         goal = GameObject.Find("Goal");
 
         // get player
@@ -98,6 +98,7 @@ public class Multiplayer2D : MonoBehaviour
             if (goal.GetComponent<GoalBehavior>().getNumberOfPlayersInGoal() >= otherPlayers.Count + 1)
             {
                 Debug.Log("all in goal");
+                globalController.GetComponent<SceneSwitch>().loadNextScene();
             }
 
             yield return 0;
