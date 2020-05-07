@@ -8,6 +8,7 @@ var players = {}
 
 // on new client connect
 wss.on('connection', function connection (client) {
+  console.log("client connected")
   // on new message recieved
   client.on('message', function incoming (data) {
     // get data from string
@@ -19,7 +20,7 @@ wss.on('connection', function connection (client) {
         y: parseFloat(y),
         z: parseFloat(z)
       },
-      timestamp: Date.now()
+      timestamp: Date.now(),
     }
     // save player udid to the client
     client.udid = udid
@@ -34,9 +35,9 @@ function broadcastUpdate () {
     // filter out current player by client.udid
     var otherPlayers = Object.keys(players).filter(udid => udid !== client.udid)
     // create array from the rest
-    var otherPlayersPositions = otherPlayers.map(udid => players[udid])
+    var otherPlayersData = otherPlayers.map(udid => players[udid])
     // send it
-    client.send(JSON.stringify({players: otherPlayersPositions}))
+    client.send(JSON.stringify({players: otherPlayersData}))
   })
 }
 

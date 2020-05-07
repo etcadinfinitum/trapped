@@ -27,11 +27,16 @@ public class Multiplayer2D : MonoBehaviour
 
     private GameObject globalController;
 
+    private GameObject goal;
+
     IEnumerator Start()
     {
+        /*
         // get global controller
         globalController = GameObject.Find("GlobalController");
-        //globalController.GetComponent<GlobalBehavior>().setTestSet(true);
+        */
+        goal = GameObject.Find("Goal");
+
         // get player
         GameObject player = GameObject.Find("Player");
 
@@ -55,7 +60,6 @@ public class Multiplayer2D : MonoBehaviour
 
                 // deserialize recieved data
                 Players data = JsonUtility.FromJson<Players>(message);
-
                 // if number of players is not enough, create new ones
                 if (data.players.Count > otherPlayers.Count)
                 {
@@ -90,6 +94,12 @@ public class Multiplayer2D : MonoBehaviour
                 prevPosition = player.transform.position;
             }
 
+            // check if all players in goal
+            if (goal.GetComponent<GoalBehavior>().getNumberOfPlayersInGoal() >= otherPlayers.Count + 1)
+            {
+                Debug.Log("all in goal");
+            }
+
             yield return 0;
         }
 
@@ -97,4 +107,11 @@ public class Multiplayer2D : MonoBehaviour
         Debug.Log("Error occured, closing connection");
         w.Close();
     }
+
+    /*
+    public List<GameObject> getPlayersList()
+    {
+        return otherPlayers;
+    }
+    */
 }
