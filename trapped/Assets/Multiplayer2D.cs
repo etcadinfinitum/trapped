@@ -98,6 +98,7 @@ public class Multiplayer2D : MonoBehaviour
             if (goal.GetComponent<GoalBehavior>().getNumberOfPlayersInGoal() >= otherPlayers.Count + 1)
             {
                 Debug.Log("all in goal");
+                Destroy(player);
                 globalController.GetComponent<SceneSwitch>().loadNextScene();
             }
 
