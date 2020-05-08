@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GlobalBehavior : MonoBehaviour
 {
-
-    //private List<GameObject> otherPlayers = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
