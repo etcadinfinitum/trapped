@@ -1,19 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
- * Multiplayer 2D Uses 
- * 
- * 
- * 
- * 
- *
-*/
+
 public class GoalBehavior : MonoBehaviour
 {
     private Rigidbody2D rb;
     private int totalInGoal = 0;
-    private bool inGoal = false;
     public GameObject teleportLocation;
     public GameObject newCameraLocation;
     // Start is called before the first frame update
