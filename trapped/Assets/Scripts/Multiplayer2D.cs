@@ -33,6 +33,8 @@ public class Multiplayer2D : MonoBehaviour
 
     private int totalNumberOfPlayers;
 
+    WebSocket w = null;
+
     IEnumerator Start()
     {
         // get global controller
@@ -43,8 +45,10 @@ public class Multiplayer2D : MonoBehaviour
         // get player
         GameObject player = GameObject.Find("Player");
         totalNumberOfPlayers++;
-        // connect to server TODO: Get this working not using local host (127.0.0.1)
-        WebSocket w = new WebSocket(new Uri("ws://127.0.0.1:8000"));
+
+        // connect to server
+        // TODO: do this conditionally
+        w = new WebSocket(new Uri("ws://138.68.84.89:8000"));
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS");
 
@@ -107,12 +111,9 @@ public class Multiplayer2D : MonoBehaviour
 
     }
 
-    /*
-    public List<GameObject> getPlayersList()
-    {
-        return otherPlayers;
+    void OnApplicationQuit() {
+        w.Close();
     }
-    */
 
     public int getTotalPlayerCount()
     {
