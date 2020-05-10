@@ -55,6 +55,8 @@ public class Multiplayer2D : MonoBehaviour
         // generate random ID to have idea for each client (feels unsecure)
         System.Guid myGUID = System.Guid.NewGuid();
 
+        player.GetComponent<PlayerData>().SetGuid(myGUID);
+
         // wait for messages
         while (true)
         {
