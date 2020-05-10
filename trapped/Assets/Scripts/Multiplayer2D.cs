@@ -47,8 +47,12 @@ public class Multiplayer2D : MonoBehaviour
         totalNumberOfPlayers++;
 
         // connect to server
-        // TODO: do this conditionally
+        // do this conditionally
+        #if (UNITY_EDITOR)
+        w = new WebSocket(new Uri("ws://127.0.0.1:8000"));
+        #else
         w = new WebSocket(new Uri("ws://138.68.84.89:8000"));
+        #endif
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS");
 
