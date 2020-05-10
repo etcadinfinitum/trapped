@@ -27,32 +27,35 @@ public class Multiplayer2D : MonoBehaviour
 
     private GameObject globalController;
 
-    private GameObject goal;
-
-    bool nextScene = false;
-
     private int totalNumberOfPlayers;
 
-    WebSocket w = null;
+    private string ip;
+    private int port = 8000;
 
     IEnumerator Start()
     {
-        // get global controller
-        globalController = GameObject.Find("GlobalController");
-        
-        goal = GameObject.Find("Goal");
+
 
         // get player
         GameObject player = GameObject.Find("Player");
         totalNumberOfPlayers++;
 
+        // get global controller
+        globalController = GameObject.Find("GlobalController");
+        ip = globalController.GetComponent<GlobalBehavior>().getIP();
+        if (ip == null) //if ip was set on connection scene, use that. else use default
+        {
+            #if (UNITY_EDITOR)
+            ip = "127.0.0.1";
+            #else
+            ip = "138.68.84.89"; //permament server ip
+            #endif
+            Debug.Log("IP not set on connection scene, using" + ip);
+        }
+
         // connect to server
-        // do this conditionally
-        #if (UNITY_EDITOR)
-        w = new WebSocket(new Uri("ws://127.0.0.1:8000"));
-        #else
-        w = new WebSocket(new Uri("ws://138.68.84.89:8000"));
-        #endif
+        WebSocket w = new WebSocket(new Uri("ws://"+ip+":"+port));
+
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS");
 
