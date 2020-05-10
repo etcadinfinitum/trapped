@@ -78,6 +78,10 @@ public class Multiplayer2D : MonoBehaviour
                         totalNumberOfPlayers++;
                     }
                 }
+                // if number of players is greater than server sent, delete the right one
+                else if (data.players.Count < otherPlayers.Count) {
+                    // TODO: implement
+                }
 
                 // update players positions
                 for (int i = 0; i < otherPlayers.Count; i++)
