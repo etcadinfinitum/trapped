@@ -32,6 +32,8 @@ public class Multiplayer2D : MonoBehaviour
     private string ip;
     private int port = 8000;
 
+    private WebSocket w = null;
+
     IEnumerator Start()
     {
 
@@ -54,7 +56,7 @@ public class Multiplayer2D : MonoBehaviour
         }
 
         // connect to server
-        WebSocket w = new WebSocket(new Uri("ws://"+ip+":"+port));
+        w = new WebSocket(new Uri("ws://"+ip+":"+port));
 
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS");
