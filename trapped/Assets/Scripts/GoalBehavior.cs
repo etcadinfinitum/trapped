@@ -1,36 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
- * Multiplayer 2D Uses 
- * 
- * 
- * 
- * 
- *
-*/
+
 public class GoalBehavior : MonoBehaviour
 {
     private Rigidbody2D rb;
     private int totalInGoal = 0;
-    private bool inGoal = false;
     public GameObject teleportLocation;
     public GameObject newCameraLocation;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
     }
 
     private void Update()
     {
         //check if all players are in goal
-        if(GameObject.Find("Player").GetComponent<Multiplayer2D>().getTotalPlayerCount() == totalInGoal)
+        if(player.GetComponent<Multiplayer2D>().getTotalPlayerCount() == totalInGoal)
         {
             if (teleportLocation != null)
             {
-                GameObject.Find("Player").transform.position = teleportLocation.transform.position;
-                Camera.main.transform.position = newCameraLocation.transform.position;
+                StartCoroutine(teleportPlayers());
             }
             else
             {
@@ -60,5 +53,12 @@ public class GoalBehavior : MonoBehaviour
     public int getNumberOfPlayersInGoal()
     {
         return totalInGoal;
+    }
+
+    IEnumerator teleportPlayers()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject.Find("Player").transform.position = teleportLocation.transform.position;
+        Camera.main.transform.position = newCameraLocation.transform.position;
     }
 }
