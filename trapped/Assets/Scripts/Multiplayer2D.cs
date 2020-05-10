@@ -35,6 +35,7 @@ public class Multiplayer2D : MonoBehaviour
     IEnumerator Start()
     {
 
+
         // get player
         GameObject player = GameObject.Find("Player");
         totalNumberOfPlayers++;
@@ -50,6 +51,7 @@ public class Multiplayer2D : MonoBehaviour
 
         // connect to server TODO: Get this working not using local host (127.0.0.1)
         WebSocket w = new WebSocket(new Uri("ws://"+ip+":"+port));
+
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS");
 
