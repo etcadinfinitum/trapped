@@ -32,6 +32,8 @@ public class Multiplayer2D : MonoBehaviour
     private string ip;
     private int port = 8000;
 
+    private WebSocket w = null;
+
     IEnumerator Start()
     {
 
@@ -43,20 +45,26 @@ public class Multiplayer2D : MonoBehaviour
         // get global controller
         globalController = GameObject.Find("GlobalController");
         ip = globalController.GetComponent<GlobalBehavior>().getIP();
-        if (ip == null) //if ip was set on connection scene, use that. else default to localhost
+        if (ip == null) //if ip was set on connection scene, use that. else use default
         {
+            #if (UNITY_EDITOR)
             ip = "127.0.0.1";
-            Debug.Log("IP not set on connection scene, using localhost as default IP.");
+            #else
+            ip = "138.68.84.89"; //permament server ip
+            #endif
+            Debug.Log("IP not set on connection scene, using" + ip);
         }
 
-        // connect to server TODO: Get this working not using local host (127.0.0.1)
-        WebSocket w = new WebSocket(new Uri("ws://"+ip+":"+port));
+        // connect to server
+        w = new WebSocket(new Uri("ws://"+ip+":"+port));
 
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS");
 
         // generate random ID to have idea for each client (feels unsecure)
         System.Guid myGUID = System.Guid.NewGuid();
+
+        player.GetComponent<PlayerData>().SetGuid(myGUID);
 
         // wait for messages
         while (true)
@@ -78,6 +86,10 @@ public class Multiplayer2D : MonoBehaviour
                         otherPlayers.Add(Instantiate(otherPlayerObject, data.players[otherPlayers.Count + i].position, Quaternion.identity));
                         totalNumberOfPlayers++;
                     }
+                }
+                // if number of players is greater than server sent, delete the right one
+                else if (data.players.Count < otherPlayers.Count) {
+                    // TODO: implement
                 }
 
                 // update players positions
@@ -114,12 +126,9 @@ public class Multiplayer2D : MonoBehaviour
 
     }
 
-    /*
-    public List<GameObject> getPlayersList()
-    {
-        return otherPlayers;
+    void OnApplicationQuit() {
+        w.Close();
     }
-    */
 
     public int getTotalPlayerCount()
     {
