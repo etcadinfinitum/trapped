@@ -9,7 +9,7 @@ var players = {}
 // on new client connect
 wss.on('connection', function connection (client) {
   console.log("client connected")
-  client.broadcastyest = false
+//  client.broadcastyest = false
   // type of 'clients' is Set, so we use .size instead of .length
   console.log('# of connected clients: ' + wss.clients.size);
   // on new message recieved
@@ -24,13 +24,15 @@ wss.on('connection', function connection (client) {
         z: parseFloat(z)
       },
       timestamp: Date.now(),
+      id: udid,
     }
     // save player udid to the client
     client.udid = udid
-    if(!client.broadcastyest){
-        broadcastUID(client.udid, 1)
-        client.broadcastyest = true;
-    }
+    
+//    if(!client.broadcastyest){
+//        broadcastUID(client.udid, 1)
+//        client.broadcastyest = true;
+//    }
     
   })
   client.on('close', function incoming(code, reason) {
@@ -74,10 +76,11 @@ function broadcastUpdate () {
     var otherPlayers = Object.keys(players).filter(udid => udid !== client.udid)
     // create array from the rest
     var otherPlayersData = otherPlayers.map(udid => players[udid])
+    console.log(otherPlayersData);
     // send it
     client.send(JSON.stringify({players: otherPlayersData}))
   })
 }
 
 // call broadcastUpdate every 0.1s
-setInterval(broadcastUpdate, 100)
+setInterval(broadcastUpdate, 2000)

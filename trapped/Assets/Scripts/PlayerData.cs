@@ -20,6 +20,8 @@ public class PlayerData : MonoBehaviour {
     public void SetID(string id)
     {
         myID = id;
+        Debug.Log("Playerdata set id to");
+        Debug.Log(id);
     }
 
     public string GetID()

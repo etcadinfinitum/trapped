@@ -9,11 +9,13 @@ public class Position
 {
     public Vector3 position;
     public int timestamp;
+    public string id;
 }
 [Serializable]
 public class PlayersPositions
 {
     public List<Position> players;
+
 }
 [Serializable]
 public class Message
@@ -87,13 +89,14 @@ public class Multiplayer2D : MonoBehaviour
                 bool notMovement = true;
                 try
                 {
+                    Debug.Log(message);
                     PlayersPositions data = JsonUtility.FromJson<PlayersPositions>(message);
                     updateOnReceiveMovement(data);
                     notMovement = false;
                 }
-                catch (ArgumentException e)
+                catch (ArgumentException)
                 {
-                    Debug.Log("Message received was not movement data"+e);
+                    //Debug.Log("Message received was not movement data");//+e);
                 }
                 if (notMovement)
                 {
@@ -103,20 +106,34 @@ public class Multiplayer2D : MonoBehaviour
                         Debug.Log("GOT MESSAGE OF" + message);
                         Message m = JsonUtility.FromJson<Message>(message);
                         Debug.Log("message was" + m.mode + m.id);
-                        foreach(var x in otherPlayers)
+                        GameObject found = null;
+                        if (m.mode == 0)
                         {
-                            string xID = x.GetComponent<PlayerData>().GetID();
-                            if (xID == m.id)
+                            foreach (var x in otherPlayers)
                             {
-                                Debug.Log("found and removed player");
-                                otherPlayers.Remove(x);
+                                string xID = x.GetComponent<PlayerData>().GetID();
+                                Debug.Log("compare" + xID + " " + m.id);
+                                if (xID.Equals(m.id))
+                                {
+                                    Debug.Log("found and removed player");
+                                    found = x;
+                                    
+                                }
+                            }
+                            if (found != null)
+                            {
+                                Destroy(found);
+                                otherPlayers.Remove(found);
+                                totalNumberOfPlayers--;
+                                Debug.Log("removed");
                             }
                         }
                         
+                        
                     }
-                    catch(ArgumentException e)
+                    catch(ArgumentException)
                     {
-                        Debug.Log("WTF" + e);
+                        //Debug.Log("Message was not an id?" + e);
                     }
                 }
 
@@ -156,9 +173,12 @@ public class Multiplayer2D : MonoBehaviour
             for (int i = 0; i < data.players.Count - otherPlayers.Count; i++)
             {
                 GameObject newGuy = Instantiate(otherPlayerObject, data.players[otherPlayers.Count + i].position, Quaternion.identity);
-                newGuy.GetComponent<PlayerData>().SetID("set ID");
+                newGuy.GetComponent<PlayerData>().SetID(data.players[otherPlayers.Count +i].id);
+                Debug.Log("new player id set to" + newGuy.GetComponent<PlayerData>().GetID());
                 otherPlayers.Add(newGuy);
                 totalNumberOfPlayers++;
+                //broadcast my id for newcommers
+
             }
         }
         // if number of players is greater than server sent, delete the right one
