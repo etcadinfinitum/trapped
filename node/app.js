@@ -7,16 +7,15 @@ const wss = new WebSocket.Server({port: 8000})
 var players = {}
 
 // player number based on order of connection to server, increases on client connect, decreases on disconnect
-var connectOrder = 0
+var connectOrder = 1
 
 // on new client connect
 wss.on('connection', function connection (client) {
   console.log("client connected")
   // type of 'clients' is Set, so we use .size instead of .length
   console.log('# of connected clients: ' + wss.clients.size)
-  
-    //assign and send client's connect order on connect
-
+    
+  //assign client's connect order on connect
   client.order = connectOrder
   connectOrder++
   
@@ -32,7 +31,7 @@ wss.on('connection', function connection (client) {
         z: parseFloat(z)
       },
       timestamp: Date.now(),
-      id: udid+connectOrder,
+      id: udid+client.order,
     }
     // save player udid to the client
     client.udid = udid

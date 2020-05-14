@@ -10,7 +10,7 @@ public class ConnectButton : MonoBehaviour
         ip = ipfield.text;
         if (ip != "")
         {
-            GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().setIP(ip);
+            GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetIP(ip);
             SceneManager.LoadScene(1);
 
         }
