@@ -9,11 +9,19 @@ public class Position
 {
     public Vector3 position;
     public int timestamp;
+    public string id;
 }
 [Serializable]
-public class Players
+public class PlayersPositions
 {
     public List<Position> players;
+
+}
+[Serializable]
+public class Message
+{
+    public int mode;
+    public string id;
 }
 
 public class Multiplayer2D : MonoBehaviour
@@ -42,9 +50,9 @@ public class Multiplayer2D : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         totalNumberOfPlayers++;
 
-        // get global controller
+        // get global controller, use IP in global controller
         globalController = GameObject.Find("GlobalController");
-        ip = globalController.GetComponent<GlobalBehavior>().getIP();
+        ip = globalController.GetComponent<GlobalBehavior>().GetIP();
         if (ip == null) //if ip was set on connection scene, use that. else use default
         {
             #if (UNITY_EDITOR)
@@ -71,34 +79,39 @@ public class Multiplayer2D : MonoBehaviour
         {
             // read message
             string message = w.RecvString();
+            
             // check if message is not empty
             if (message != null)
             {
-                // Debug.Log("RECEIVED FROM WEBSOCKETS: " + reply);
+                //Debug.Log("RECEIVED FROM WEBSOCKETS: " + message);
 
-                // deserialize recieved data
-                Players data = JsonUtility.FromJson<Players>(message);
-                // if number of players is not enough, create new ones
-                if (data.players.Count > otherPlayers.Count)
+                // DESERIALIZE RECEIVED DATA
+                // currently data can come in two forms, player movement or player uid + mode
+                bool notMovement = true;
+                try //check if received message is movement
                 {
-                    for (int i = 0; i < data.players.Count - otherPlayers.Count; i++)
+                    //Debug.Log(message);
+                    PlayersPositions data = JsonUtility.FromJson<PlayersPositions>(message);
+                    UpdateOnReceiveMovement(data);
+                    notMovement = false;
+                }
+                catch (ArgumentException)
+                {
+                    //Debug.Log("Message received was not movement data");//+e);
+                }
+                if (notMovement)
+                {
+                    try //if it's not movement, it's a disconnect message
                     {
-                        otherPlayers.Add(Instantiate(otherPlayerObject, data.players[otherPlayers.Count + i].position, Quaternion.identity));
-                        totalNumberOfPlayers++;
+                        Message m = JsonUtility.FromJson<Message>(message);
+                        //Debug.Log("message was" + m.mode + m.id);
+                        ProcessMessage(m);
+                        
                     }
-                }
-                // if number of players is greater than server sent, delete the right one
-                else if (data.players.Count < otherPlayers.Count) {
-                    // TODO: implement
-                }
-
-                // update players positions
-                for (int i = 0; i < otherPlayers.Count; i++)
-                {
-                    // using animation
-                    //otherPlayers[i].transform.position = Vector3.Lerp(otherPlayers[i].transform.position, data.players[i].position, Time.deltaTime * 10F);
-                    // or without animation
-                    otherPlayers[i].transform.position = data.players[i].position;
+                    catch(ArgumentException e)
+                    {
+                        Debug.Log("Recieved data in unknown format from server: " + e);
+                    }
                 }
             }
 
@@ -126,12 +139,101 @@ public class Multiplayer2D : MonoBehaviour
 
     }
 
+    void UpdateOnReceiveMovement(PlayersPositions data)
+    {
+        // if number of players is not enough, create new ones
+        if (data.players.Count > otherPlayers.Count)
+        {
+            for (int i = 0; i < data.players.Count - otherPlayers.Count; i++)
+            {
+                GameObject newPlayer = Instantiate(otherPlayerObject, data.players[otherPlayers.Count + i].position, Quaternion.identity);
+                // incoming id is udid with join order concatenated at end
+                string incomingId = data.players[otherPlayers.Count + i].id;
+                string playerJoinOrder = incomingId.Substring(incomingId.Length - 1);
+                //Debug.Log("join order: " + playerJoinOrder);
+                newPlayer.GetComponent<PlayerData>().SetID(incomingId);
+                newPlayer.GetComponent<PlayerData>().SetID(incomingId);
+                otherPlayers.Add(newPlayer);
+                totalNumberOfPlayers++;
+            }
+        }
+
+        // update other player positions (does not assume sorted data from server, but a little inefficient)
+        foreach (var player in otherPlayers)
+        {
+            foreach(var playerData in data.players)
+            {
+                if (player.GetComponent<PlayerData>().GetID().Equals(playerData.id))
+                {
+                    // using animation
+                    //player.transform.position = Vector3.Lerp(player.transform.position, playerData.position, Time.deltaTime * 10F);
+                    player.transform.position = playerData.position;
+                    break;
+                }
+            }
+            
+        }
+
+    }
+
+    void ProcessMessage(Message m)
+    {
+        switch (m.mode)
+        {
+            // disconnect client mode
+            case 0:
+                GameObject found = null;
+                //iterate through the players list, and fine the player
+                foreach (var x in otherPlayers)
+                {
+                    string xID = x.GetComponent<PlayerData>().GetID();
+                    //Debug.Log("compare" + xID + " " + m.id);
+                    if (xID.Equals(m.id))
+                    {
+                        //Debug.Log("found and removed player");
+                        found = x;
+
+                    }
+                }
+                // need to destroy the player if found outside foreach loop, otherwise get exception
+                // (can't delete an element from a collection while iterating through it)
+                if (found != null)
+                {
+                    Destroy(found);
+                    otherPlayers.Remove(found);
+                    totalNumberOfPlayers--;
+                    //Debug.Log("removed");
+                }
+                break;
+
+                //OPTIONAL implement other modes as needed
+        }
+    }
+
     void OnApplicationQuit() {
         w.Close();
     }
 
-    public int getTotalPlayerCount()
+    public int GetTotalPlayerCount()
     {
         return totalNumberOfPlayers;
+    }
+
+    public List<GameObject> GetOtherPlayers()
+    {
+        return otherPlayers;
+    }
+
+    // get player by join order (starting from 1), returns null if not found
+    public GameObject GetPlayer(int number)
+    {
+        foreach(var player in otherPlayers)
+        {
+            if(player.GetComponent<PlayerData>().GetPlayerNumber() == number)
+            {
+                return player;
+            }
+        }
+        return null;
     }
 }

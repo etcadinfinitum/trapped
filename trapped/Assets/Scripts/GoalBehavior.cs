@@ -19,11 +19,11 @@ public class GoalBehavior : MonoBehaviour
     private void Update()
     {
         //check if all players are in goal
-        if(player.GetComponent<Multiplayer2D>().getTotalPlayerCount() == totalInGoal)
+        if(player.GetComponent<Multiplayer2D>().GetTotalPlayerCount() == totalInGoal)
         {
             if (teleportLocation != null)
             {
-                StartCoroutine(teleportPlayers());
+                StartCoroutine(TeleportPlayers());
             }
             else
             {
@@ -50,12 +50,12 @@ public class GoalBehavior : MonoBehaviour
         }
     }
 
-    public int getNumberOfPlayersInGoal()
+    public int GetNumberOfPlayersInGoal()
     {
         return totalInGoal;
     }
 
-    IEnumerator teleportPlayers()
+    IEnumerator TeleportPlayers()
     {
         yield return new WaitForSeconds(1);
         GameObject.Find("Player").transform.position = teleportLocation.transform.position;
