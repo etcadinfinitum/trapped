@@ -1,0 +1,20 @@
+title: Trapped
+description: A networked multiplayer game built for UW Bothell's Game Development class.
+
+remote_theme: "etcadinfinitum/mixtape"
+
+exclude: [node]
+
+header_links:
+  - url: https://github.com/etcadinfinitum/trapped
+    name: View Source Code
+  - url: /              # This needs to be updated regularly
+    name: Play Now
+
+nav_links:
+  - url: /
+    name: Home
+  - url: /log
+    name: Dev Log
+  - url: /about
+    name: About
