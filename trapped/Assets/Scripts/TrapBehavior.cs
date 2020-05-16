@@ -49,7 +49,7 @@ public class TrapBehavior : MonoBehaviour
                     player.Teleport();
                 }
             }
-            Destroy(this.gameObject);
-        }
+            
+        }Destroy(this.gameObject);
     } 
 }
