@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
+    PlayerMovement position; 
     // Start is called before the first frame update
     void Start()
     {
-        
+        position = gameObject.GetComponent<PlayerMovement>(); 
     }
 
     // Update is called once per frame
@@ -28,6 +29,16 @@ public class PlayerBehavior : MonoBehaviour
         //Unfreeze the player
         player.enabled = true;
     }
+
+    public void Teleport() {
+        transform.position = new Vector3(-7.5f, 1f, 0.5f);
+    }
+/*
+    private void OnCollisionEnter2D(Collision2D colliderObj){
+        if (colliderObj.gameObject.tag == "Tele Trap"){
+            Teleport();
+        }
+    }*/
     /*
     void OnCollisionEnter2D(Collision2D colliderObj){
         if (colliderObj.gameObject.tag == "Stun Trap"){
