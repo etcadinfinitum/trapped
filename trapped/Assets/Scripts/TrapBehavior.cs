@@ -39,16 +39,17 @@ public class TrapBehavior : MonoBehaviour
 
         if (tag == "Player") {
             //....
-            if (this.gameObject.tag == "Stun Trap") {
-                Debug.Log("Player stunned!");
-                //Player should have stalled on their end. 
-                PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>();
-                if (player != null) {
-                    player.GetStunned(); 
+            PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>(); 
+            if (player != null){
+                if (this.gameObject.tag == "Stun Trap"){
+                    Debug.Log("Player Stunned!"); 
+                    player.GetStunned();
+                } else if (this.gameObject.tag == "Tele Trap") {
+                    Debug.Log("Player Teleported!"); 
+                    player.Teleport();
                 }
-                Destroy(this.gameObject);
-                
             }
+            Destroy(this.gameObject);
         }
     } 
 }
