@@ -43,8 +43,11 @@ public class TrapBehavior : MonoBehaviour
                 Debug.Log("Player stunned!");
                 //Player should have stalled on their end. 
                 PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>();
-                player.GetStunned();
-                Destroy(this.gameObject); 
+                if (player != null) {
+                    player.GetStunned(); 
+                }
+                Destroy(this.gameObject);
+                
             }
         }
     } 
