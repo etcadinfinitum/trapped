@@ -9,6 +9,8 @@ public class PlayerData : MonoBehaviour {
 
     public string myID;
 
+    public string myPlayerName;
+
     private int myPlayerNumber;
 
     public void SetGuid(System.Guid guid) {
@@ -39,4 +41,28 @@ public class PlayerData : MonoBehaviour {
     {
         myPlayerNumber = int.Parse(playerNumber);
     }
+
+    public string GetPlayerName()
+    {
+        return myPlayerName;
+    }
+
+    public void SetPlayerName(string newName)
+    {
+        myPlayerName = newName;
+    }
+
+    //set the player name
+    public void SetName(string newName)
+    {
+        myPlayerName = newName;
+        Debug.Log("Player Name set to: " + newName);
+    }
+
+    //used for text vars
+    public string GetName()
+    {
+        return myPlayerName;
+    }
+
 }

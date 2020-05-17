@@ -5,6 +5,11 @@ using UnityEngine;
 public class GlobalBehavior : MonoBehaviour
 {
     private static string ip;
+
+    private string playerName;
+    
+    
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -43,5 +48,18 @@ public class GlobalBehavior : MonoBehaviour
     public string GetIP()
     {
         return ip;
+    }
+
+    //set the player name
+    public void SetName(string newName)
+    {
+        playerName = newName;
+        Debug.Log("Player Name set to: " + newName);
+    }
+
+    //used for text vars
+    public string GetName()
+    {
+        return playerName;
     }
 }
