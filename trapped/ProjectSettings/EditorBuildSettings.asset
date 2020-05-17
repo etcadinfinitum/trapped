@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConnectScreen.unity
     guid: ffef1f174f714db45958625ab6ca2d0e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Maze.unity
     guid: 0216538bbb80560448796eebddac9a7a
   - enabled: 0
-    path: Assets/Scenes/Maze2.unity
-    guid: c4b838ea8ec6a4e4298df04b1230250f
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Maze1.unity
+    guid: a5dd335b5480f894e9ae72e1307e3c29
   m_configObjects: {}
