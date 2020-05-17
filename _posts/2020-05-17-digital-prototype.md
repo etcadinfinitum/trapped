@@ -79,8 +79,8 @@ TODO: List what obstacles are blocking development efforts.
 
 ## Reflection
 
-The team is wokring together well at this point with different members
-specializing in different tasks to make things as efficient as possible.
+The team is wokring together well at this point, different members are
+specializing in different tasks to make things are efficient as possible.
 As stated we are fussing with git and merge conflicts between meta files
 and scene files which is proving to be a nusance, however The game as a
 whole is coming together well and we are learning a lot about Unity!
