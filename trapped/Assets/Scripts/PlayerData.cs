@@ -13,6 +13,8 @@ public class PlayerData : MonoBehaviour {
 
     private int myPlayerNumber;
 
+    private bool blind = false;
+
     public void SetGuid(System.Guid guid) {
         myGUID = guid;
     }
@@ -65,4 +67,16 @@ public class PlayerData : MonoBehaviour {
         return myPlayerName;
     }
 
+    public void SetVision(bool newValue) {
+        // TODO: set default timeout?
+        if (newValue != blind) {
+            // TODO: invoke a coroutine to fade the "Blinded" GameObject's alpha
+            blind = newValue;
+        }
+    }
+
+    public void ToggleVision() {
+        // TODO: invoke a coroutine to fade the "Blinded" GameObject's alpha
+        blind = !blind;
+    }
 }
