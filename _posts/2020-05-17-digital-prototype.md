@@ -1,0 +1,64 @@
+---
+layout: post
+title: Development Log for Digital Prototype
+description: Implementation notes and updates for game progress, coinciding with the Digital Prototype deadline for the game.
+---
+
+# Development Log Dated 5-17-2020
+
+## Completed Milestones
+
+1. We have successfully implemented the networked component of the game, 
+   and the `node` server we set up is configured to share player map 
+   positions and unique IDs for player identification.
+2. We have a prototype of a maze map in place.
+3. We have implemented several forms of PC traps.
+
+## Current Work
+
+TODO: List what work is currently being done by the team.
+
+* Victor:
+* Jayden:
+* Denali:
+* Kyle:
+* Lizzy: I am working on the system which obscures the map for specific 
+  players using either timed intervals or in-game events (like reaching 
+  a specific part of the map or stepping on a trap tile); originally, 
+  I wanted to have this implemented for the prototype deadline but other 
+  tasks for this project and other classes have blocked progress.
+
+## Upcoming Features & Backlogged Items
+
+These are the next big features we are planning on implementing (or 
+currently working on):
+
+* We would like to create NPC enemies which affect players on collisions; 
+  we are still discussing the best way to do this, but we think that the 
+  collision will affect PC health and the enemy proximity will not trigger 
+  tracking or following behavior.
+
+TODO: List what features or ideas are on the backlog and/or will be completed next.
+
+## Playtesting Analysis
+
+We have not conducted meaningful playtesting yet, but have been testing 
+basic functionality (connection to the node server, spawning and removing 
+players who join or leave the game, etc) ad hoc.
+
+We will provide a playtesting analysis writeup after our first round 
+of testing this week.
+
+## Blockers
+
+Our group members who are not very adept with `git` have been working to 
+adapt to collaboration in a shared repository; resolving merge conflicts 
+has been a regular occurance. We are adapting to this challenge admirably, 
+but it is still a big gotcha.
+
+TODO: List what obstacles are blocking development efforts.
+
+## Reflection
+
+TODO: Reflect on the game's state and the development process. List what is working and what is not working.
+
