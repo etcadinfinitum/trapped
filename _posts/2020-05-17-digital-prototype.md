@@ -30,7 +30,11 @@ TODO: List what work is currently being done by the team.
   when approaching the edges of the maps. I am also working on making
   additional maps and sprucing up the maps already in the game to "set the
   scene" better.
-* Kyle:
+* Kyle: Finished health bar/player status implementation and currently
+  making UI optimized better for multiplayer. I am now converting text 
+  into TMP for better aesthetic and currently working on visual 
+  implementation for status effects (poisoned, stunned, etc) so the 
+  players have better understanding of what is going on in the game. 
 * Lizzy: I am working on the system which obscures the map for specific 
   players using either timed intervals or in-game events (like reaching 
   a specific part of the map or stepping on a trap tile); originally, 
@@ -52,6 +56,8 @@ currently working on):
 * Design at least 2 more maps.
 * Implement advanced camera follow so that the player does not see "void"
   when approaching the edges of the maps.
+* Implement player-player interaction that such as health gain/loss,
+  revival, and giving/removing player status effects.   
 
 TODO: List what features or ideas are on the backlog and/or will be completed next.
 
