@@ -33,14 +33,14 @@ public class GlobalBehavior : MonoBehaviour
     }
 
     //set the static ip, used by ConnectButton script on connection scene
-    public void setIP(string inputIP)
+    public void SetIP(string inputIP)
     {
         ip = inputIP;
         Debug.Log("set ip to: " + ip);
     }
 
     //used by multiplayer2d script to set the connection ip
-    public string getIP()
+    public string GetIP()
     {
         return ip;
     }
