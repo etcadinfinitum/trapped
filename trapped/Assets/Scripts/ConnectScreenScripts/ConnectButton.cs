@@ -11,17 +11,11 @@ public class ConnectButton : MonoBehaviour
         ip = ipfield.text;
         if (ip != "")
         {
-            name = GameObject.Find("SetNameText").GetComponent<Text>().text;
-            GameObject.Find("SetNameText").name = "AltNameText";
-
             GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetIP(ip);
-            GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetName(name);
-            SceneManager.LoadScene(1);
-
         }
-        else
-        {
-            Debug.Log("IP field is empty");
-        }
+        name = GameObject.Find("SetNameText").GetComponent<Text>().text;
+        GameObject.Find("SetNameText").name = "AltNameText";
+        GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetName(name);
+        SceneManager.LoadScene(1);
     }
 }
