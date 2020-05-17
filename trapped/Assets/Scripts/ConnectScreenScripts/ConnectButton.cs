@@ -11,12 +11,8 @@ public class ConnectButton : MonoBehaviour
         if (ip != "")
         {
             GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetIP(ip);
-            SceneManager.LoadScene(1);
 
         }
-        else
-        {
-            Debug.Log("IP field is empty");
-        }
+        SceneManager.LoadScene(1);
     }
 }

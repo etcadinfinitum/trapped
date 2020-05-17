@@ -67,7 +67,7 @@ public class Multiplayer2D : MonoBehaviour
         w = new WebSocket(new Uri("ws://"+ip+":"+port));
 
         yield return StartCoroutine(w.Connect());
-        Debug.Log("CONNECTED TO WEBSOCKETS");
+        Debug.Log("CONNECTED TO WEBSOCKETS; IP is " + ip);
 
         // generate random ID to have idea for each client (feels unsecure)
         System.Guid myGUID = System.Guid.NewGuid();
