@@ -24,7 +24,12 @@ TODO: List what work is currently being done by the team.
   Currently working on creating a minimap that'll show each player's 
   location on a mini HUD in the corner of the screen (Going to be just dots
   on a blank canvas to begin with) 
-* Denali:
+* Denali: Finished 2 large map prototypes and the basic camera follow.
+  Currently working on more advanced camera follow mechanics to make sure
+  that the player does not feel disoriented and cannot see the "void"
+  when approaching the edges of the maps. I am also working on making
+  additional maps and sprucing up the maps already in the game to "set the
+  scene" better.
 * Kyle:
 * Lizzy: I am working on the system which obscures the map for specific 
   players using either timed intervals or in-game events (like reaching 
@@ -41,8 +46,12 @@ currently working on):
   we are still discussing the best way to do this, but we think that the 
   collision will affect PC health and the enemy proximity will not trigger 
   tracking or following behavior.
-* Implement "vision-levels" to the traps. Eg. Only some players can see traps
-  or only some players can see a specific type of trap while the others cannot. 
+* Implement player roles with "vision-levels" for the traps. Eg. Only some
+  players can see traps or only some players can see a specific type of trap
+  while the others cannot.
+* Design at least 2 more maps.
+* Implement advanced camera follow so that the player does not see "void"
+  when approaching the edges of the maps.
 
 TODO: List what features or ideas are on the backlog and/or will be completed next.
 
@@ -62,9 +71,19 @@ adapt to collaboration in a shared repository; resolving merge conflicts
 has been a regular occurance. We are adapting to this challenge admirably, 
 but it is still a big gotcha.
 
+Looking ahead, if we decide to go in the direction of multiple instances
+of the game running at the same time, modifying server code for this may
+be a challenge.
+
 TODO: List what obstacles are blocking development efforts.
 
 ## Reflection
+
+The team is wokring together well at this point with different members
+specializing in different tasks to make things as efficient as possible.
+As stated we are fussing with git and merge conflicts between meta files
+and scene files which is proving to be a nusance, however The game as a
+whole is coming together well and we are learning a lot about Unity!
 
 TODO: Reflect on the game's state and the development process. List what is working and what is not working.
 
