@@ -33,6 +33,8 @@ public class Multiplayer2D : MonoBehaviour
     private Vector3 prevPosition;
     private List<GameObject> otherPlayers = new List<GameObject>();
 
+    public List<string> playerNames = new List<string>();
+
     private GameObject globalController;
 
     private int totalNumberOfPlayers;
@@ -50,9 +52,11 @@ public class Multiplayer2D : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         totalNumberOfPlayers++;
 
+
         // get global controller, use IP in global controller
         globalController = GameObject.Find("GlobalController");
         ip = globalController.GetComponent<GlobalBehavior>().GetIP();
+        player.GetComponent<PlayerData>().SetPlayerName(globalController.GetComponent<GlobalBehavior>().GetName());
         if (ip == null) //if ip was set on connection scene, use that. else use default
         {
             #if (UNITY_EDITOR)

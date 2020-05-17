@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStatus : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerStatus : MonoBehaviour
     public float maxHealth = 100;
     public float health = 100;
     public bool isAlive = true;
+
+    public GameObject healthbar;
 
     //Health bar UI elements
     public Slider mySlider;
@@ -80,6 +83,45 @@ public class PlayerStatus : MonoBehaviour
     }
 
     public List<Condition> conditions = new List<Condition>();
+
+    void Start()
+    {
+        GameObject myHealthbar = Instantiate(healthbar);
+
+        myHealthbar.transform.parent = GameObject.Find("Canvas").transform;
+
+        mySlider = myHealthbar.GetComponent<Slider>();
+
+
+
+
+        string newName = ("Player" + gameObject.GetComponent<PlayerData>().GetPlayerNumber());
+
+       if(gameObject.GetComponent<PlayerData>().GetName() == null || gameObject.GetComponent<PlayerData>().GetName() == "")
+        {
+            Debug.Log("Player Name Error: " + GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().GetName());
+            gameObject.GetComponent<PlayerData>().SetName(GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().GetName());
+        }
+        //Debug.Log(myHealthbar.transform.GetChild(3).name);
+        TextMeshProUGUI test = myHealthbar.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        newName = gameObject.GetComponent<PlayerData>().GetName();
+        Debug.Log("SET NEW NAME TO " + gameObject.GetComponent<PlayerData>().GetName());
+        test.SetText(newName);
+
+        switch (gameObject.GetComponent<PlayerData>().GetPlayerNumber())
+        {
+            case 0:
+                myHealthbar.transform.position = new Vector2(120, 555);
+                break;
+            default:
+                Debug.Log("Oops");
+                break;
+
+        }
+                
+        
+       
+    }
 
     void Update()
     {
