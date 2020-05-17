@@ -19,7 +19,11 @@ description: Implementation notes and updates for game progress, coinciding with
 TODO: List what work is currently being done by the team.
 
 * Victor:
-* Jayden:
+* Jayden: Finished core trap mechanics. Need to polish up the teleportation 
+  mechanic to work on teleporting players who step on it "randomly". 
+  Currently working on creating a minimap that'll show each player's 
+  location on a mini HUD in the corner of the screen (Going to be just dots
+  on a blank canvas to begin with) 
 * Denali:
 * Kyle:
 * Lizzy: I am working on the system which obscures the map for specific 
@@ -37,6 +41,8 @@ currently working on):
   we are still discussing the best way to do this, but we think that the 
   collision will affect PC health and the enemy proximity will not trigger 
   tracking or following behavior.
+* Implement "vision-levels" to the traps. Eg. Only some players can see traps
+  or only some players can see a specific type of trap while the others cannot. 
 
 TODO: List what features or ideas are on the backlog and/or will be completed next.
 
