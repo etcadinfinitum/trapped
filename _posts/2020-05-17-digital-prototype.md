@@ -16,8 +16,6 @@ description: Implementation notes and updates for game progress, coinciding with
 
 ## Current Work
 
-TODO: List what work is currently being done by the team.
-
 * Victor:
 * Jayden: Finished core trap mechanics. Need to polish up the teleportation 
   mechanic to work on teleporting players who step on it "randomly". 
