@@ -1,9 +1,15 @@
 title: Trapped
 description: A networked multiplayer game built for UW Bothell's Game Development class.
+url: https://lizzy.wiki/trapped
 
 remote_theme: "etcadinfinitum/mixtape"
 
 exclude: [node]
+
+collections:
+  posts:
+    permalink: "/log/:year/:month/:day/:title/"
+    output: true
 
 header_links:
   - url: https://github.com/etcadinfinitum/trapped
