@@ -90,11 +90,10 @@ TODO: List what obstacles are blocking development efforts.
 
 ## Reflection
 
-The team is wokring together well at this point, different members are
+The team is working together well at this point; different members are
 specializing in different tasks to make things are efficient as possible.
 As stated we are fussing with git and merge conflicts between meta files
-and scene files which is proving to be a nusance, however The game as a
+and scene files which is proving to be a nuisance. However, the game as a
 whole is coming together well and we are learning a lot about Unity!
 
 TODO: Reflect on the game's state and the development process. List what is working and what is not working.
-
