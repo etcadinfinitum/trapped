@@ -62,8 +62,6 @@ currently working on):
 
 
 
-TODO: List what features or ideas are on the backlog and/or will be completed next.
-
 ## Playtesting Analysis
 
 We have not conducted meaningful playtesting yet, but have been testing 
