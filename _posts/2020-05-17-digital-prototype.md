@@ -22,7 +22,9 @@ description: Implementation notes and updates for game progress, coinciding with
   to each client and broadcasts this chunk of data in 100ms intervals as a json object string 
   back to every client. Clients deserializes and processes this info to update otherPlayer positions.
   More functionality will need to be added to the server script and multiplayer2D script for additional
-  data to be sent between clients.
+  data to be sent between clients, and the client needs to update to correctly 
+  reflect when another player has disconnected from the server and remove the 
+  corresponding GameObject.
 * Jayden: Finished core trap mechanics. Need to polish up the teleportation 
   mechanic to work on teleporting players who step on it "randomly". 
   Currently working on creating a minimap that'll show each player's 
@@ -47,7 +49,7 @@ description: Implementation notes and updates for game progress, coinciding with
   The existing work for this feature is [visible on GitHub](https://github.com/etcadinfinitum/trapped/pull/33) 
   and will affect the PC's camera view like this:
 
-  ![gif of blinder mechanics WIP]({% link /static/images/blinder_mechs.gif | relative_url %})
+  ![gif of blinder mechanics WIP]({{ site.url }}/static/images/blinder_mechs.gif)
 
 ## Upcoming Features & Backlogged Items
 
