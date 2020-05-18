@@ -16,7 +16,13 @@ description: Implementation notes and updates for game progress, coinciding with
 
 ## Current Work
 
-* Victor:
+* Victor: Reworked and expanded the starter websocket code multiplayer2D and the 
+  server code app.js for multiplayer functionality. Currently, each client communicates 
+  their position and udid to the server. The server assigns a join order on connection 
+  to each client and broadcasts this chunk of data in 100ms intervals as a json object string 
+  back to every client. Clients deserializes and processes this info to update otherPlayer positions.
+  More functionality will need to be added to the server script and multiplayer2D script for additional
+  data to be sent between clients.
 * Jayden: Finished core trap mechanics. Need to polish up the teleportation 
   mechanic to work on teleporting players who step on it "randomly". 
   Currently working on creating a minimap that'll show each player's 
@@ -87,5 +93,8 @@ be a challenge.
 The team is working together well at this point; different members are
 specializing in different tasks to make things are efficient as possible.
 As stated we are fussing with git and merge conflicts between meta files
-and scene files which is proving to be a nuisance. However, the game as a
-whole is coming together well and we are learning a lot about Unity!
+and scene files which is proving to be a nuisance. 
+
+The multiplayer aspect was also very time consuming, as we are not using
+UNET framework but rather implementing barebones with websockets. However, 
+the game as a whole is coming together well and we are learning a lot about Unity!
