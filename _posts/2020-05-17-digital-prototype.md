@@ -82,8 +82,6 @@ Looking ahead, if we decide to go in the direction of multiple instances
 of the game running at the same time, modifying server code for this may
 be a challenge.
 
-TODO: List what obstacles are blocking development efforts.
-
 ## Reflection
 
 The team is working together well at this point; different members are
