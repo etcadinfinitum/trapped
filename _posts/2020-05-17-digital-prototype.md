@@ -40,6 +40,9 @@ TODO: List what work is currently being done by the team.
   a specific part of the map or stepping on a trap tile); originally, 
   I wanted to have this implemented for the prototype deadline but other 
   tasks for this project and other classes have blocked progress.
+  The existing work for this feature is [visible on GitHub](https://github.com/etcadinfinitum/trapped/pull/33) 
+  and will affect the PC's camera view like this:
+  ![gif of blinder mechanics WIP]({% link /static/images/blinder_mechs.gif %})
 
 ## Upcoming Features & Backlogged Items
 
@@ -58,6 +61,8 @@ currently working on):
   when approaching the edges of the maps.
 * Implement player-player interaction that such as health gain/loss,
   revival, and giving/removing player status effects.   
+
+
 
 TODO: List what features or ideas are on the backlog and/or will be completed next.
 
