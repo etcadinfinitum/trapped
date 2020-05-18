@@ -47,7 +47,7 @@ description: Implementation notes and updates for game progress, coinciding with
   The existing work for this feature is [visible on GitHub](https://github.com/etcadinfinitum/trapped/pull/33) 
   and will affect the PC's camera view like this:
 
-  ![gif of blinder mechanics WIP]({% link /static/images/blinder_mechs.gif %})
+  ![gif of blinder mechanics WIP]({% link /static/images/blinder_mechs.gif | relative_url %})
 
 ## Upcoming Features & Backlogged Items
 
