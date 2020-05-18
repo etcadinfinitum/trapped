@@ -4,7 +4,15 @@ layout: default
 
 ## Credits
 
-TODO :bug:
+This game was made by the following individuals:
+
+| Photo | Name | Bio |
+|-------|------|-----|
+| TODO  | Denali | TODO | 
+| TODO  | Jayden | TODO |
+| TODO  | Kyle   | TODO |
+| TODO  | Lizzy  | TODO |
+| TODO  | Victor | TODO |
 
 ## References
 
