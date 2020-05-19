@@ -7,7 +7,6 @@ public class GoalBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private int totalInGoal = 0;
     public GameObject teleportLocation;
-    public GameObject newCameraLocation;
     private GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -58,7 +57,6 @@ public class GoalBehavior : MonoBehaviour
     IEnumerator TeleportPlayers()
     {
         yield return new WaitForSeconds(1);
-        GameObject.Find("Player").transform.position = teleportLocation.transform.position;
-        Camera.main.transform.position = newCameraLocation.transform.position;
+        GameObject.Find("Player").transform.position = new Vector3(teleportLocation.transform.position.x, teleportLocation.transform.position.y, 0);
     }
 }
