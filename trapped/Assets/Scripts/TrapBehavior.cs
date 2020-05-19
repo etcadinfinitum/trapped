@@ -15,10 +15,10 @@ public class TrapBehavior : MonoBehaviour
             Debug.Log("No players found... wat :0"); 
         } else {
             //Sorting in order of playerID
-            foreach (PlayerData player in temp){
+            /*foreach (PlayerData player in temp){
                 Debug.Log(player.name);
                 //players[Int32.Parse(player.GetID())] = player; 
-            }
+            } */
         }
     }
 
@@ -50,6 +50,7 @@ public class TrapBehavior : MonoBehaviour
                 }
             }
             
-        }Destroy(this.gameObject);
+        }
+        Destroy(this.gameObject);
     } 
 }
