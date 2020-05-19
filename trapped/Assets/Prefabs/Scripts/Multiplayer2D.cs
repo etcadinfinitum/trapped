@@ -68,7 +68,7 @@ public class Multiplayer2D : MonoBehaviour
         }
 
         // connect to server
-        w = new WebSocket(new Uri("ws://"+ip+":"+port));
+        w = new WebSocket(new Uri("wss://"+ip+":"+port));
 
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS; IP is " + ip);
