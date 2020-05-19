@@ -112,24 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &237243729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5000349996291370453, guid: b7f737f54a4c90b40b34177e98671c4a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1286629582501165362}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &237243730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237243729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b86c36b8b61bcfb82c76312d58cfa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &345849757
 GameObject:
   m_ObjectHideFlags: 0
@@ -50385,7 +50367,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportLocation: {fileID: 1493711106}
-  newCameraLocation: {fileID: 1493711106}
 --- !u!212 &1141884945
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -128550,7 +128531,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportLocation: {fileID: 403981925}
-  newCameraLocation: {fileID: 403981925}
 --- !u!212 &1754507504
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -128810,6 +128790,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 910434365063457663, guid: b7f737f54a4c90b40b34177e98671c4a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3290551415027264379, guid: b7f737f54a4c90b40b34177e98671c4a,
         type: 3}
       propertyPath: m_LocalPosition.x

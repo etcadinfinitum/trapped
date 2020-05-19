@@ -48,8 +48,9 @@ public class TrapBehavior : MonoBehaviour
                     Debug.Log("Player Teleported!"); 
                     player.Teleport();
                 }
+                //Destroy(this.gameObject);
             }
-            
+            Destroy(this.gameObject);
         }
         Destroy(this.gameObject);
     } 
