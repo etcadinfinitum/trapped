@@ -60,15 +60,15 @@ public class Multiplayer2D : MonoBehaviour
         if (ip == null) //if ip was set on connection scene, use that. else use default
         {
             #if (UNITY_EDITOR)
-            ip = "127.0.0.1";
+            ip = "127.0.0.1:" + port;
             #else
-            ip = "138.68.84.89"; //permament server ip
+            ip = "ws.lizzy.wiki"; // "permament" server hostname
             #endif
             Debug.Log("IP not set on connection scene, using" + ip);
         }
 
         // connect to server
-        w = new WebSocket(new Uri("wss://"+ip+":"+port));
+        w = new WebSocket(new Uri("wss://" + ip));
 
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS; IP is " + ip);
