@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+        rb.drag = 0; //remove friction
 
     }
 

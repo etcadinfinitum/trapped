@@ -66,7 +66,7 @@ public class Multiplayer2D : MonoBehaviour
             #else
             ip = "ws.lizzy.wiki"; // "permament" server hostname
             #endif
-            Debug.Log("IP not set on connection scene, using" + ip);
+            Debug.Log("IP not set on connection scene, using " + ip);
         }
         // connect to server
         w = new WebSocket(new Uri(prefix + "://" + ip));
@@ -92,32 +92,21 @@ public class Multiplayer2D : MonoBehaviour
 
                 // DESERIALIZE RECEIVED DATA
                 // currently data can come in two forms, player movement or player uid + mode
-                bool notMovement = true;
-                try //check if received message is movement
+                switch (message[8])
                 {
-                    //Debug.Log(message);
-                    PlayersPositions data = JsonUtility.FromJson<PlayersPositions>(message);
-                    UpdateOnReceiveMovement(data);
-                    notMovement = false;
-                }
-                catch (ArgumentException)
-                {
-                    //Debug.Log("Message received was not movement data");//+e);
-                }
-                if (notMovement)
-                {
-                    try //if it's not movement, it's a disconnect message
-                    {
+                    case 's':
+                        //Debug.Log("Message was movement: " + message);
+                        PlayersPositions data = JsonUtility.FromJson<PlayersPositions>(message);
+                        UpdateOnReceiveMovement(data);
+                        break;
+                    case '0':
                         Message m = JsonUtility.FromJson<Message>(message);
-                        //Debug.Log("message was" + m.mode + m.id);
+                        //Debug.Log("Message was mode 0 (disconnect): " + m.mode + m.id);
                         ProcessMessage(m);
-                        
-                    }
-                    catch(ArgumentException e)
-                    {
-                        Debug.Log("Recieved data in unknown format from server: " + e);
-                    }
-                }
+                        break;
+
+
+                }          
             }
 
             // if connection error, break the loop
@@ -157,7 +146,6 @@ public class Multiplayer2D : MonoBehaviour
                 string playerJoinOrder = incomingId.Substring(incomingId.Length - 1);
                 //Debug.Log("join order: " + playerJoinOrder);
                 newPlayer.GetComponent<PlayerData>().SetID(incomingId);
-                newPlayer.GetComponent<PlayerData>().SetID(incomingId);
                 otherPlayers.Add(newPlayer);
                 totalNumberOfPlayers++;
             }
@@ -192,7 +180,7 @@ public class Multiplayer2D : MonoBehaviour
                 foreach (var x in otherPlayers)
                 {
                     string xID = x.GetComponent<PlayerData>().GetID();
-                    //Debug.Log("compare" + xID + " " + m.id);
+                    Debug.Log("compare" + xID + " " + m.id);
                     if (xID.Equals(m.id))
                     {
                         //Debug.Log("found and removed player");

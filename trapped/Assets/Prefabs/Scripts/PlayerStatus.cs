@@ -99,13 +99,13 @@ public class PlayerStatus : MonoBehaviour
 
        if(gameObject.GetComponent<PlayerData>().GetName() == null || gameObject.GetComponent<PlayerData>().GetName() == "")
         {
-            Debug.Log("Player Name Error: " + GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().GetName());
+            //Debug.Log("Player Name Error: " + GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().GetName());
             gameObject.GetComponent<PlayerData>().SetName(GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().GetName());
         }
         //Debug.Log(myHealthbar.transform.GetChild(3).name);
         TextMeshProUGUI test = myHealthbar.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         newName = gameObject.GetComponent<PlayerData>().GetName();
-        Debug.Log("SET NEW NAME TO " + gameObject.GetComponent<PlayerData>().GetName());
+        //Debug.Log("SET NEW NAME TO " + gameObject.GetComponent<PlayerData>().GetName());
         test.SetText(newName);
 
         switch (gameObject.GetComponent<PlayerData>().GetPlayerNumber())

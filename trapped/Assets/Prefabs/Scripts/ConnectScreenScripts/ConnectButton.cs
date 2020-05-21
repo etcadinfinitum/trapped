@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ConnectButton : MonoBehaviour
 {
     string ip;
-    private string name;
+    private string myName;
     public void ConnectButtonClick(InputField ipfield)
     {
         ip = ipfield.text;
@@ -13,9 +13,9 @@ public class ConnectButton : MonoBehaviour
         {
             GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetIP(ip);
         }
-        name = GameObject.Find("SetNameText").GetComponent<Text>().text;
+        myName = GameObject.Find("SetNameText").GetComponent<Text>().text;
         GameObject.Find("SetNameText").name = "AltNameText";
-        GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetName(name);
+        GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetName(myName);
         SceneManager.LoadScene(1);
     }
 }
