@@ -50427,7 +50427,7 @@ GameObject:
   - component: {fileID: 827101003}
   - component: {fileID: 827101002}
   - component: {fileID: 827101001}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50702,7 +50702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1323029540}
   - component: {fileID: 1323029541}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128672,7 +128672,7 @@ GameObject:
   - component: {fileID: 1360556985}
   - component: {fileID: 1360556987}
   - component: {fileID: 1360556986}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Minimap_texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129011,6 +129011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047054490171775604, guid: 51b3d930401eb3f459937fdc166e51dc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}

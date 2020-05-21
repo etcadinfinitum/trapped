@@ -56,7 +56,7 @@ public class PlayerData : MonoBehaviour {
     public void SetName(string newName)
     {
         myPlayerName = newName;
-        Debug.Log("Player Name set to: " + newName);
+        //Debug.Log("Player Name set to: " + newName);
     }
 
     //used for text vars
