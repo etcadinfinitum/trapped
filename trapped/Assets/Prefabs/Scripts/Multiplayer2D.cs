@@ -68,7 +68,6 @@ public class Multiplayer2D : MonoBehaviour
             #endif
             Debug.Log("IP not set on connection scene, using" + ip);
         }
-
         // connect to server
         w = new WebSocket(new Uri(prefix + "://" + ip));
 
