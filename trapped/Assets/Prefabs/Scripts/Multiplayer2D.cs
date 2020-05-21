@@ -41,6 +41,7 @@ public class Multiplayer2D : MonoBehaviour
 
     private string ip;
     private int port = 8000;
+    private string prefix = "wss";
 
     private WebSocket w = null;
 
@@ -61,6 +62,7 @@ public class Multiplayer2D : MonoBehaviour
         {
             #if (UNITY_EDITOR)
             ip = "127.0.0.1:" + port;
+            prefix = "ws";
             #else
             ip = "ws.lizzy.wiki"; // "permament" server hostname
             #endif
@@ -68,7 +70,7 @@ public class Multiplayer2D : MonoBehaviour
         }
 
         // connect to server
-        w = new WebSocket(new Uri("wss://" + ip));
+        w = new WebSocket(new Uri(prefix + "://" + ip));
 
         yield return StartCoroutine(w.Connect());
         Debug.Log("CONNECTED TO WEBSOCKETS; IP is " + ip);
