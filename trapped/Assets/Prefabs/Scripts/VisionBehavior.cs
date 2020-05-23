@@ -29,7 +29,7 @@ public class VisionBehavior : MonoBehaviour {
         if (duration < 0f) {
             duration = Random.Range(8f, 20f);
         }
-        Debug.Log("Setting next vision change to be " + duration + " seconds from now.");
+        // Debug.Log("Setting next vision change to be " + duration + " seconds from now.");
         this.nextChange = Time.time + duration;
     }
 
@@ -71,10 +71,8 @@ public class VisionBehavior : MonoBehaviour {
             return false;
         mutex = true;
         if (this.blind) {
-            Debug.Log("Clearing vision (was dark, will be light)");
             StartCoroutine("FadeVisionIn");
         } else {
-            Debug.Log("Obscuring vision (was light, will be dark)");
             StartCoroutine("FadeVisionOut");
         }
         this.blind = !this.blind;
@@ -103,9 +101,9 @@ public class VisionBehavior : MonoBehaviour {
         for (float a = alpha; a >= 0f; a -= (alpha / 10f)) {
             Color c = new Color(0, 0, 0, a);
             blindMap.color = c;
-            // blindMap.RefreshAllTiles();
             yield return new WaitForSeconds(0.05f);
         }
+        blindMap.color = new Color(0, 0, 0, 0f);
     }
 
 }
