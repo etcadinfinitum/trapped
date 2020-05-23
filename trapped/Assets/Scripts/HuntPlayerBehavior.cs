@@ -6,16 +6,20 @@ using UnityEngine.AI;
 public class HuntPlayerBehavior : MonoBehaviour
 {
     public GameObject target = null;
-    private NavMeshAgent nma = null;
+    private NavMeshAgent agent = null;
     // Start is called before the first frame update
     void Start()
     {
-        nma = this.GetComponent<NavMeshAgent>();
+        agent = this.GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        // stops the agent from slowing down around corners
+        agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        nma.SetDestination(target.transform.position);
+        agent.SetDestination(target.transform.position);
     }
 }
