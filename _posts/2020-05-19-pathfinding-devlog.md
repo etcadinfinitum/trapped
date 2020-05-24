@@ -27,7 +27,9 @@ one we found [in this thread](https://answers.unity.com/questions/1492606/unity-
 and the we decided to go with: https://github.com/h8man/NavMeshPlus
 
 NavMeshPlus by h8man is really well documented, and is ready to go by simply adding this dependency: 
-"com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git#master".
+```
+"com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git#master"
+```
 
 
 ## The Next Problem
