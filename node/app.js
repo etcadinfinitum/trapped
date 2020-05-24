@@ -17,8 +17,15 @@ wss.on('connection', function connection (client) {
     
   //assign client's connect order on connect
   client.order = connectOrder
+  console.log("Client's join order: " + client.order)
   connectOrder++
-  setJoinOrder = false;
+  //send join order to client
+  var discomessage = {
+        mode: 1,
+        id: client.order
+    }
+  client.send(JSON.stringify(discomessage))
+  
   // on new message recieved
   client.on('message', function incoming (data) {
     // get data from string
@@ -45,6 +52,7 @@ wss.on('connection', function connection (client) {
     connectOrder--;
   })
 })
+
 
 //called when client disconnects (mode 0). More modes currently not implemented
 function broadcastUID(uid, modeType){
