@@ -3,6 +3,8 @@ description: A networked multiplayer game built for UW Bothell's Game Developmen
 url: https://lizzy.wiki/trapped
 
 remote_theme: "etcadinfinitum/mixtape"
+plugins:
+  - jemoji
 
 exclude: [node]
 
