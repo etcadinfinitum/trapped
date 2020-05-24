@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Pathfinding for Enemy chase behavior, Difficulty with 2D navmashes
-description: Containing instructions for writing up posts for the development log.
+title: Pathfinding and 2D Navmesh Challenges
+description: We had to change our map philosophy to allow pathfinding for enemy NPCs; here's a short note about the work Victor did to get this figured out.
 ---
 
 # Development Log Dated 05-23-2020
