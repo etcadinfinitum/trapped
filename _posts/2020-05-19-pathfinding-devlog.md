@@ -23,7 +23,7 @@ Ok, cool, maybe next project, but we have done too much work in 2D at this point
 
 2. Import third party navmesh components for 2D.
 Open source is the best. Turns out other people have already solved this problem for me. There are a couple components out there,
-one we found in this thread: https://answers.unity.com/questions/1492606/unity-2d-navmesh-for-a-tilemap.html
+one we found [in this thread](https://answers.unity.com/questions/1492606/unity-2d-navmesh-for-a-tilemap.html)
 and the we decided to go with: https://github.com/h8man/NavMeshPlus
 
 NavMeshPlus by h8man is really well documented, and is ready to go by simply adding this dependency: 
