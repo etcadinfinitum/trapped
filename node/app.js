@@ -17,6 +17,7 @@ wss.on('connection', function connection (client) {
     
   //assign client's connect order on connect
   client.order = connectOrder
+  console.log("Client's join order: " + client.order)
   connectOrder++
   //send join order to client
   var discomessage = {

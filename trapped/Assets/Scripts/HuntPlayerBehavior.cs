@@ -26,15 +26,20 @@ public class HuntPlayerBehavior : MonoBehaviour
         // agent needs to chase player only after multiplayer2D script has determined what player to target
         if (playerNotFound)
         {
+            //Debug.Log(player.GetComponent<Multiplayer2D>().GetPlayer(1));
             if (player.GetComponent<Multiplayer2D>().GetPlayer(1) != null)
             {
-                target = player;
+                target = player.GetComponent<Multiplayer2D>().GetPlayer(1);
                 playerNotFound = false;
             }
         }
         else
         {
-            agent.SetDestination(target.transform.position);
+            if (target != null) // player can disconnect, this check prevents crash by accessing null target
+            {
+                agent.SetDestination(target.transform.position);
+            }
+
         }
 
     }

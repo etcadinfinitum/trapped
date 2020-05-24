@@ -37,9 +37,9 @@ public class PlayerData : MonoBehaviour {
         return myPlayerNumber;
     }
 
-    public void SetPlayerNumber(string playerNumber)
+    public void SetPlayerNumber(int playerNumber)
     {
-        myPlayerNumber = int.Parse(playerNumber);
+        myPlayerNumber = playerNumber;
     }
 
     public string GetPlayerName()

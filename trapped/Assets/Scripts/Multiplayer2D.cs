@@ -146,9 +146,10 @@ public class Multiplayer2D : MonoBehaviour
                 GameObject newPlayer = Instantiate(otherPlayerObject, data.players[otherPlayers.Count + i].position, Quaternion.identity);
                 // incoming id is udid with join order concatenated at end
                 string incomingId = data.players[otherPlayers.Count + i].id;
-                string playerJoinOrder = incomingId.Substring(incomingId.Length - 1);
-                //Debug.Log("join order: " + playerJoinOrder);
+                string playerJoinOrder = incomingId.Substring(incomingId.Length -1);
+                Debug.Log("join order: " + playerJoinOrder);
                 newPlayer.GetComponent<PlayerData>().SetID(incomingId);
+                newPlayer.GetComponent<PlayerData>().SetPlayerNumber(int.Parse(playerJoinOrder));
                 otherPlayers.Add(newPlayer);
                 totalNumberOfPlayers++;
             }
@@ -180,7 +181,7 @@ public class Multiplayer2D : MonoBehaviour
         foreach (var x in otherPlayers)
         {
             string xID = x.GetComponent<PlayerData>().GetID();
-            Debug.Log("compare" + xID + " " + m.id);
+            //Debug.Log("compare" + xID + " " + m.id);
             if (xID.Equals(m.id))
             {
                 //Debug.Log("found and removed player");
@@ -201,7 +202,7 @@ public class Multiplayer2D : MonoBehaviour
 
     void ReceiveJoinOrder(Message m)
     {
-        GameObject.Find("Player").GetComponent<PlayerData>().SetPlayerNumber(m.id);
+        GameObject.Find("Player").GetComponent<PlayerData>().SetPlayerNumber(int.Parse(m.id));
         //Debug.Log("set player join number to " + GameObject.Find("Player").GetComponent<PlayerData>().GetID());
     }
 
