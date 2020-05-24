@@ -7,11 +7,11 @@ public class PlayerData : MonoBehaviour {
 
     private System.Guid myGUID;
 
-    public string myID;
+    public string myID; //not sure why would ever need player udid, TODO: check if this is being used anywhere
 
     public string myPlayerName;
 
-    private int myPlayerNumber;
+    private int myPlayerNumber; //set by join order
 
     public void SetGuid(System.Guid guid) {
         myGUID = guid;

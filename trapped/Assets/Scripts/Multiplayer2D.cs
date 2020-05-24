@@ -102,10 +102,13 @@ public class Multiplayer2D : MonoBehaviour
                     case '0':
                         Message m = JsonUtility.FromJson<Message>(message);
                         //Debug.Log("Message was mode 0 (disconnect): " + m.mode + m.id);
-                        ProcessMessage(m);
+                        ProcessDisconnect(m);
                         break;
-
-
+                    case '1':
+                        Message joinOrderMessage = JsonUtility.FromJson<Message>(message);
+                        //Debug.Log("Message was mode 1 (join order) " + message);
+                        ReceiveJoinOrder(joinOrderMessage);
+                        break;
                 }          
             }
 
@@ -169,38 +172,37 @@ public class Multiplayer2D : MonoBehaviour
 
     }
 
-    void ProcessMessage(Message m)
+    void ProcessDisconnect(Message m)
     {
-        switch (m.mode)
+
+        GameObject found = null;
+        //iterate through the players list, and find the player
+        foreach (var x in otherPlayers)
         {
-            // disconnect client mode
-            case 0:
-                GameObject found = null;
-                //iterate through the players list, and fine the player
-                foreach (var x in otherPlayers)
-                {
-                    string xID = x.GetComponent<PlayerData>().GetID();
-                    Debug.Log("compare" + xID + " " + m.id);
-                    if (xID.Equals(m.id))
-                    {
-                        //Debug.Log("found and removed player");
-                        found = x;
+            string xID = x.GetComponent<PlayerData>().GetID();
+            Debug.Log("compare" + xID + " " + m.id);
+            if (xID.Equals(m.id))
+            {
+                //Debug.Log("found and removed player");
+                found = x;
 
-                    }
-                }
-                // need to destroy the player if found outside foreach loop, otherwise get exception
-                // (can't delete an element from a collection while iterating through it)
-                if (found != null)
-                {
-                    Destroy(found);
-                    otherPlayers.Remove(found);
-                    totalNumberOfPlayers--;
-                    //Debug.Log("removed");
-                }
-                break;
-
-                //OPTIONAL implement other modes as needed
+            }
         }
+        // need to destroy the player if found outside foreach loop, otherwise get exception
+        // (can't delete an element from a collection while iterating through it)
+        if (found != null)
+        {
+            Destroy(found);
+            otherPlayers.Remove(found);
+            totalNumberOfPlayers--;
+            //Debug.Log("removed");
+        }
+    }
+
+    void ReceiveJoinOrder(Message m)
+    {
+        GameObject.Find("Player").GetComponent<PlayerData>().SetPlayerNumber(m.id);
+        //Debug.Log("set player join number to " + GameObject.Find("Player").GetComponent<PlayerData>().GetID());
     }
 
     void OnApplicationQuit() {
@@ -220,6 +222,13 @@ public class Multiplayer2D : MonoBehaviour
     // get player by join order (starting from 1), returns null if not found
     public GameObject GetPlayer(int number)
     {
+        // check if it's the client player
+        GameObject thisPlayer = GameObject.Find("Player"); //player client controls
+        if (thisPlayer.GetComponent<PlayerData>().GetPlayerNumber() == number){
+            return thisPlayer;
+        }
+
+        //search through other players list
         foreach(var player in otherPlayers)
         {
             if(player.GetComponent<PlayerData>().GetPlayerNumber() == number)
@@ -227,6 +236,7 @@ public class Multiplayer2D : MonoBehaviour
                 return player;
             }
         }
+        // no player found
         return null;
     }
 }
