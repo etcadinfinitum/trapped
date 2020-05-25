@@ -17,7 +17,14 @@ wss.on('connection', function connection (client) {
     
   //assign client's connect order on connect
   client.order = connectOrder
+  console.log("Client's join order: " + client.order)
   connectOrder++
+  //send join order to client
+  var discomessage = {
+        mode: 1,
+        id: client.order
+    }
+  client.send(JSON.stringify(discomessage))
   
   // on new message recieved
   client.on('message', function incoming (data) {
@@ -30,7 +37,7 @@ wss.on('connection', function connection (client) {
         y: parseFloat(y),
         z: parseFloat(z)
       },
-      timestamp: Date.now(),
+      timestamp: Date.now(),      
       id: udid+client.order,
     }
     // save player udid to the client
@@ -40,11 +47,12 @@ wss.on('connection', function connection (client) {
   client.on('close', function incoming(code, reason) {
     console.log('client connection closed.\n\tcode: ' + code + '\n\treason: ' + reason);
     console.log("Udid was: " + this.udid)
-    broadcastUID(this.udid, 0)
+    broadcastUID(this.udid + client.order, 0)
     delete players[client.udid];
     connectOrder--;
   })
 })
+
 
 //called when client disconnects (mode 0). More modes currently not implemented
 function broadcastUID(uid, modeType){
