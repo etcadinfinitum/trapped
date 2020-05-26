@@ -4,7 +4,7 @@ layout: default
 
 # Play Now!
 
-TODO :bug: add link
+* [**Alpha Playtesting Release**](https://lizzy.wiki/trapped/release/alpha/)
 
 # Game Trailer
 
