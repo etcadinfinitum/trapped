@@ -6,6 +6,8 @@ description: Here's what we accomplished leading up to the deployment of a proto
 
 # Development Log Dated 05-25-2020
 
+Our [**Alpha Release**](https://lizzy.wiki/trapped/release/alpha/) is available to play _now_! :grin:
+
 ## Completed Milestones
 
 * Lizzy: [Generated SSL/TLS certificates for the host of our multiplayer server.]({% link _posts/2020-05-19-networking-devlog.md %})
