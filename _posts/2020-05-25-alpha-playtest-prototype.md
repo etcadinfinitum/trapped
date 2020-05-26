@@ -36,12 +36,12 @@ description: Here's what we accomplished leading up to the deployment of a proto
     * Working on refactoring current traps. 
     * Redesigning arrow mechanic - Each player has small arrows surrounding themself that point in the direction of other players. 
 * Denali: Making new maps that support NPC movement. We found that NPCs cannot track playerse on a navmesh through single-tile
-   * corridors, so we are keeping the old ones, but designing additional maps with two-tile wide corridors so that the NPCs
-   * can effectively track the players and chase them within the map. After this, will be working on implmeneting new traps
-   * from Jayden into the new maps as well as helping the multiplayer design.
+    corridors, so we are keeping the old ones, but designing additional maps with two-tile wide corridors so that the NPCs
+    can effectively track the players and chase them within the map. After this, will be working on implmeneting new traps
+    from Jayden into the new maps as well as helping the multiplayer design.
 * Kyle: Working on making the server broadcasts work for all clients, then adding names above players and moving on to sounds/music.
     * Unfortunately I couldn't resolve my branch's merge conflicts before the alpha playtest, but I have it resolved now and
-    * successfully merged while working on the next features now.
+      successfully merged while working on the next features now.
 * Lizzy: Health depletion mechanics for players which become too far separated from each other; completion planned for 5/31.
 
 ## Upcoming Features & Backlogged Items
@@ -71,11 +71,10 @@ We are excited to get some playtesters for our game in its current form, and hop
 
 ## Blockers
 
-For some of us, GIT is still proving to be an issue, especially when trying to merge .unity scene files. We've just recently learned a technique for decreasing
+For some of us, `git` is still proving to be an issue, especially when trying to merge `.unity` scene files. We've just recently learned a technique for decreasing
 scene conflicts (using prefabs), and hopefully these headache merges will be minimized going forward. 
 
 ## Reflection
 
-TODO: Reflect on the game's state and the development process. List what is working and what is not working.
-The game is together in our master branch, as stated before, multiplayer still needs some work. However, maps and many player-oriented
+The game is together in our master branch, as stated before. Multiplayer mechanics and puzzle-style features still needs some work. However, maps and many player-oriented
 features are coming together well and looking great. 
