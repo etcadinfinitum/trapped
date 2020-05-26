@@ -22,11 +22,11 @@ description: Here's what we accomplished leading up to the deployment of a proto
 * Victor: Implemented an enemey behavior that chases the first player to connect using a NavMeshPlus dependency for 2D. 
 * Victor: Refactored the main scene to use prefabs to decrease future headache merge conflicts.
 * Jayden: Created pressure plate mechanic. Trigger is attached to a separate shooting object. 
-* Jayden: Implemented a minimap for each player. Still testing largeness of minimap vs. usability 
-* Jayden: Made dart-behavior to interact with player behavior 
-* Kyle: Created text announcement system to broadcast messages for players in the server
-* Kyle: Refactored announcement system to be functional with a single line of code and improved graphics and added scrolling text
-* Kyle: Added queue system for announcements and functionality for in-game player communication with preset messages attached to names
+* Jayden: Implemented a minimap for each player. Still testing largeness of minimap vs. usability.
+* Jayden: Made dart-behavior to interact with player behavior .
+* Kyle: Created text announcement system to broadcast messages for players in the server.
+* Kyle: Refactored announcement system to be functional with a single line of code and improved graphics and added scrolling text.
+* Kyle: Added queue system for announcements and functionality for in-game player communication with preset messages.
 
 ## Current Work
 
@@ -71,7 +71,7 @@ We are excited to get some playtesters for our game in its current form, and hop
 
 ## Blockers
 
-For some of us. GIT is still proving to be an issue, especially when trying to merge .unity scene files. We've just recently learned a technique for decreasing
+For some of us, GIT is still proving to be an issue, especially when trying to merge .unity scene files. We've just recently learned a technique for decreasing
 scene conflicts (using prefabs), and hopefully these headache merges will be minimized going forward. 
 
 ## Reflection
