@@ -20,7 +20,10 @@ description: Here's what we accomplished leading up to the deployment of a proto
 ## Current Work
 
 * Victor:
-* Jayden:
+* Jayden: 
+    * Made new trap mechanics. Pressure plate and dart trigger working and made as prefabs. Made a normal dart and poison
+    dart prefabs to be interchanged. Dart collision is working properly. 
+    * Made a player-specific minimap as part of the player UI 
 * Denali: Making new maps that support NPC movement. We found that NPCs cannot track playerse on a navmesh through single-tile
    * corridors, so we are keeping the old ones, but designing additional maps with two-tile wide corridors so that the NPCs
    * can effectively track the players and chase them within the map. After this, will be working on implmeneting new traps
@@ -29,6 +32,8 @@ description: Here's what we accomplished leading up to the deployment of a proto
 * Lizzy: Health depletion mechanics for players which become too far separated from each other; completion planned for 5/31.
 
 ## Upcoming Features & Backlogged Items
+Collision layering and matrix modification for collisions between traps, enemies, and the players. 
+Arrow guides that point to other players in the maze.  
 
 ##### Networking
 
