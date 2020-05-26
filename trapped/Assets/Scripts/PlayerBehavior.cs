@@ -33,6 +33,9 @@ public class PlayerBehavior : MonoBehaviour
     public void Teleport() {
         transform.position = new Vector3(-7.5f, 1f, 0.5f);
     }
+    public void OnTriggerEnter(Collider collider){
+        Debug.Log("Herm it works now");
+    }
 /*
     private void OnCollisionEnter2D(Collision2D colliderObj){
         if (colliderObj.gameObject.tag == "Tele Trap"){
