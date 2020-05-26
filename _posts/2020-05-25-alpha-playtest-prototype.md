@@ -13,14 +13,18 @@ description: Here's what we accomplished leading up to the deployment of a proto
     * This game mechanic makes the maps more difficult (and more interesting).
     * This feature is a core tenet of our original idea, and will hopefully foster interdependence between the players as they help each other navigate and avoid obstacles.
     * We may utilize this feature in future map development and additional traps.
-* TODO
+* Denali: Implmemented camera to not exceed world bounds, and work for all players. Used clamp functions rather than hardcoding all          * bounds.
+* Denali: Put trap strategicly around maps. Further progressed level design.
 * TODO
 
 ## Current Work
 
 * Victor:
 * Jayden:
-* Denali:
+* Denali: Making new maps that support NPC movement. We found that NPCs cannot track playerse on a navmesh through single-tile
+   * corridors, so we are keeping the old ones, but designing additional maps with two-tile wide corridors so that the NPCs
+   * can effectively track the players and chase them within the map. After this, will be working on implmeneting new traps
+   * from Jayden into the new maps as well as helping the multiplayer design.
 * Kyle:
 * Lizzy: Health depletion mechanics for players which become too far separated from each other; completion planned for 5/31.
 
@@ -44,8 +48,11 @@ We are excited to get some playtesters for our game in its current form, and hop
 
 ## Blockers
 
-TODO: List what obstacles are blocking development efforts.
+For some of us. GIT is still proving to be an issue, especially when trying to merge .unity scene files. There are so many little things
+that can change in these files while editing the project and it can lead to strange merge conflicts!
 
 ## Reflection
 
 TODO: Reflect on the game's state and the development process. List what is working and what is not working.
+The game is together in our master branch, as stated before, multiplayer still needs some work. However, maps and many player-oriented
+features are coming together well and looking great. 
