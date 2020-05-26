@@ -88,7 +88,7 @@ public class PlayerStatus : MonoBehaviour
     {
         GameObject myHealthbar = Instantiate(healthbar);
 
-        myHealthbar.transform.parent = GameObject.Find("Canvas").transform;
+        myHealthbar.transform.parent = GameObject.Find("PlayerCanvas").transform;
 
         mySlider = myHealthbar.GetComponent<Slider>();
 
