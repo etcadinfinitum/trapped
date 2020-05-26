@@ -21,15 +21,17 @@ description: Here's what we accomplished leading up to the deployment of a proto
 * Victor: Implemented a goal mechanic that teleports all players to the next location when all players are standing on it. 
 * Victor: Implemented an enemey behavior that chases the first player to connect using a NavMeshPlus dependency for 2D. 
 * Victor: Refactored the main scene to use prefabs to decrease future headache merge conflicts.
+* Jayden: Created pressure plate mechanic. Trigger is attached to a separate shooting object. 
+* Jayden: Implemented a minimap for each player. Still testing largeness of minimap vs. usability 
+* Jayden: Made dart-behavior to interact with player behavior 
 
 ## Current Work
 
 * Victor:
 	* Need to finish up enemy hurt mechanics so that they deal damage to the player. Will start working on death mechanics after that.  
 * Jayden: 
-    * Made new trap mechanics. Pressure plate and dart trigger working and made as prefabs. Made a normal dart and poison
-    dart prefabs to be interchanged. Dart collision is working properly. 
-    * Made a player-specific minimap as part of the player UI 
+    * Working on refactoring current traps. 
+    * Redesigning arrow mechanic - Each player has small arrows surrounding themself that point in the direction of other players. 
 * Denali: Making new maps that support NPC movement. We found that NPCs cannot track playerse on a navmesh through single-tile
    * corridors, so we are keeping the old ones, but designing additional maps with two-tile wide corridors so that the NPCs
    * can effectively track the players and chase them within the map. After this, will be working on implmeneting new traps
