@@ -24,6 +24,9 @@ description: Here's what we accomplished leading up to the deployment of a proto
 * Jayden: Created pressure plate mechanic. Trigger is attached to a separate shooting object. 
 * Jayden: Implemented a minimap for each player. Still testing largeness of minimap vs. usability 
 * Jayden: Made dart-behavior to interact with player behavior 
+* Kyle: Created text announcement system to broadcast messages for players in the server
+* Kyle: Refactored announcement system to be functional with a single line of code and improved graphics and added scrolling text
+* Kyle: Added queue system for announcements and functionality for in-game player communication with preset messages attached to names
 
 ## Current Work
 
@@ -36,7 +39,9 @@ description: Here's what we accomplished leading up to the deployment of a proto
    * corridors, so we are keeping the old ones, but designing additional maps with two-tile wide corridors so that the NPCs
    * can effectively track the players and chase them within the map. After this, will be working on implmeneting new traps
    * from Jayden into the new maps as well as helping the multiplayer design.
-* Kyle:
+* Kyle: Working on making the server broadcasts work for all clients, then adding names above players and moving on to sounds/music.
+    * Unfortunately I couldn't resolve my branch's merge conflicts before the alpha playtest, but I have it resolved now and
+    * successfully merged while working on the next features now.
 * Lizzy: Health depletion mechanics for players which become too far separated from each other; completion planned for 5/31.
 
 ## Upcoming Features & Backlogged Items
