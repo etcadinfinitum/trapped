@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherPlayerObject: {fileID: 4775421970329211983, guid: 416583d299cb10342b6d73819d2a839f,
     type: 3}
+  playerNames: []
 --- !u!114 &3116740474631620302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +175,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee183ba1cc1eed039776edd8c2355b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myID: 
+  myPlayerName: 
