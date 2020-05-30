@@ -176,17 +176,17 @@ PrefabInstance:
     - target: {fileID: 1707964113053599866, guid: 750c50b18870f8c4aa9c85aa7f901c48,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1707964113053599867, guid: 750c50b18870f8c4aa9c85aa7f901c48,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.2
+      value: -28.3
       objectReference: {fileID: 0}
     - target: {fileID: 1707964113053599867, guid: 750c50b18870f8c4aa9c85aa7f901c48,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -37.3
+      value: 17.6
       objectReference: {fileID: 0}
     - target: {fileID: 1707964113053599867, guid: 750c50b18870f8c4aa9c85aa7f901c48,
         type: 3}
@@ -8783,6 +8783,22 @@ MonoBehaviour:
     type: 3}
   mySlider: {fileID: 0}
   conditions: []
+--- !u!58 &470467546
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470467537}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.9
 --- !u!1 &616043734 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6968785079799976721, guid: edb4a28290ebc1743a3504ec19b59c74,
@@ -85116,15 +85132,20 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7047054490171775610, guid: 51b3d930401eb3f459937fdc166e51dc,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59
+      value: -38.1
       objectReference: {fileID: 0}
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36.1
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}
@@ -85169,6 +85190,11 @@ PrefabInstance:
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047054490171775615, guid: 51b3d930401eb3f459937fdc166e51dc,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
