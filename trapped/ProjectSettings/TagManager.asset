@@ -9,6 +9,11 @@ TagManager:
   - Tele Trap
   - Poison Dart
   - Normal Dart
+  - Zombie
+  - Map1Respawn
+  - Map2Respawn
+  - Map3Respawn
+  - Map4Respawn
   layers:
   - Default
   - TransparentFX
