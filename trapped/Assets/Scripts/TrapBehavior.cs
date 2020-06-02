@@ -59,7 +59,7 @@ public class TrapBehavior : MonoBehaviour
                 transformTime = 0.66f; //2/3 of a second seems like a good time
             } else if (timeCooldown == 0){
                 //Either increment or decrement here. 
-                Debug.Log("Beginning state change"); 
+                // Debug.Log("Beginning state change"); 
                 isTransforming = true; 
                 timeCooldown = 3.0f; 
             }
