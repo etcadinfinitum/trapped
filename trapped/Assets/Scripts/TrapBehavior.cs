@@ -29,7 +29,7 @@ public class TrapBehavior : MonoBehaviour
 
     IEnumerator stunPlayer(PlayerMovement player) {
         yield return new WaitForSeconds(2); 
-        Debug.Log("!@#!@#!@");
+        //Debug.Log("!@#!@#!@");
         player.enabled = true; 
         Debug.Log("Player is unstunned now.");
     }
