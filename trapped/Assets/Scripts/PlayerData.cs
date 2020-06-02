@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using TMPro;
 
 public class PlayerData : MonoBehaviour {
 
@@ -56,6 +57,7 @@ public class PlayerData : MonoBehaviour {
     public void SetName(string newName)
     {
         myPlayerName = newName;
+        GameObject.Find("PlayerName").GetComponent<TextMeshProUGUI>().text = newName;
         //Debug.Log("Player Name set to: " + newName);
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TextAnnouncement : MonoBehaviour
+public class TextClient : MonoBehaviour
 {
 
     private float lifetime = 10f;
@@ -21,7 +21,7 @@ public class TextAnnouncement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 pos = new Vector2(Screen.width/2, -100);
+        Vector2 pos = new Vector2(Screen.width / 2, -100);
         transform.position = pos;
     }
 
@@ -30,7 +30,7 @@ public class TextAnnouncement : MonoBehaviour
     {
         gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = myText;
 
-        if(textFinished)
+        if (textFinished)
             lifetime -= Time.deltaTime;
         if (lifetime < 0)
             StartCoroutine("TextFade");
@@ -38,7 +38,7 @@ public class TextAnnouncement : MonoBehaviour
 
     IEnumerator TextScroll()
     {
-        while(myText.Length != finishedText.Length)
+        while (myText.Length != finishedText.Length)
         {
             counter++;
             myText = finishedText.Substring(0, counter);
@@ -75,20 +75,10 @@ public class TextAnnouncement : MonoBehaviour
 
     public void show()
     {
-        gameObject.transform.position = new Vector2(Screen.width / 2, 20);
-        transform.position = new Vector2(Screen.width / 2, 20);
+        gameObject.transform.position = new Vector2(Screen.width / 2, Screen.height/4);
+        transform.position = new Vector2(Screen.width / 2, Screen.height / 4);
         isBroadcasting = true;
         StartCoroutine("TextScroll");
     }
-
-    public void showClient()
-    {
-        gameObject.transform.position = new Vector2(Screen.width / 2, Screen.height -50);
-        transform.position = new Vector2(Screen.width / 2, Screen.height -50);
-        isBroadcasting = true;
-        StartCoroutine("TextScroll");
-    }
-
-
 
 }

@@ -6,6 +6,10 @@ public class PopupManager : MonoBehaviour
 {
     public GameObject popupPrefab;
 
+    public GameObject snaredPrefab;
+    public GameObject teleportPrefab;
+    public GameObject poisonedPrefab;
+
     public Queue<GameObject> announcements = new Queue<GameObject>();
 
     // Start is called before the first frame update
@@ -25,17 +29,29 @@ public class PopupManager : MonoBehaviour
 
         if(announcements.Count > 0)
         {
-            if(announcements.Peek() == null)
+            if (announcements.Peek() == null)
             {
                 announcements.Dequeue();
             }
             else if (announcements.Peek().GetComponent<TextAnnouncement>().isBroadcasting == false)
             {
-                announcements.Peek().GetComponent<TextAnnouncement>().show();
+                //detect which effect
+                if (announcements.Peek().gameObject.tag == "Tele Trap" || announcements.Peek().gameObject.tag == "Stun Trap" || announcements.Peek().gameObject.tag == "Poison Dart")
+                {
+                    //Debug.Log("Success");
+                    announcements.Peek().GetComponent<TextAnnouncement>().showClient();
+                }
+                else
+                {
+                    announcements.Peek().GetComponent<TextAnnouncement>().show();
+                }
+
             }
         }
 
     }
+
+    //dont look beyond here, your eyes will burn. you have been warned
 
     public void createPopup(string text, float duration)
     {
@@ -52,4 +68,61 @@ public class PopupManager : MonoBehaviour
 
 
     }
+
+    public void createClientPopup(string text, float duration)
+    {
+        //idk why we need this, but it fixed a bug so it is the correct solution for sure
+        GameObject newPopup = Instantiate(popupPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup);
+        newPopup.GetComponent<TextAnnouncement>().setText(" ");
+        newPopup.GetComponent<TextAnnouncement>().setDuration(0.03f);
+
+        GameObject newPopup2 = Instantiate(popupPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup2);
+        newPopup2.GetComponent<TextAnnouncement>().setText(text);
+        newPopup2.GetComponent<TextAnnouncement>().setDuration(duration);
+    }
+
+    public void playerTeleport(string text, float duration)
+    {
+        //idk why we need this, but it fixed a bug so it is the correct solution for sure
+        GameObject newPopup = Instantiate(teleportPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup);
+        newPopup.GetComponent<TextAnnouncement>().setText(" ");
+        newPopup.GetComponent<TextAnnouncement>().setDuration(0.03f);
+
+        GameObject newPopup2 = Instantiate(teleportPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup2);
+        newPopup2.GetComponent<TextAnnouncement>().setText(text);
+        newPopup2.GetComponent<TextAnnouncement>().setDuration(duration);
+    }
+
+    public void playerStun(string text, float duration)
+    {
+        //idk why we need this, but it fixed a bug so it is the correct solution for sure
+        GameObject newPopup = Instantiate(snaredPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup);
+        newPopup.GetComponent<TextAnnouncement>().setText(" ");
+        newPopup.GetComponent<TextAnnouncement>().setDuration(0.03f);
+
+        GameObject newPopup2 = Instantiate(snaredPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup2);
+        newPopup2.GetComponent<TextAnnouncement>().setText(text);
+        newPopup2.GetComponent<TextAnnouncement>().setDuration(duration);
+    }
+
+    public void playerPoison(string text, float duration)
+    {
+        //idk why we need this, but it fixed a bug so it is the correct solution for sure
+        GameObject newPopup = Instantiate(poisonedPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup);
+        newPopup.GetComponent<TextAnnouncement>().setText(" ");
+        newPopup.GetComponent<TextAnnouncement>().setDuration(0.03f);
+
+        GameObject newPopup2 = Instantiate(poisonedPrefab, gameObject.transform);
+        announcements.Enqueue(newPopup2);
+        newPopup2.GetComponent<TextAnnouncement>().setText(text);
+        newPopup2.GetComponent<TextAnnouncement>().setDuration(duration);
+    }
+
 }

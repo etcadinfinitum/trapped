@@ -19,11 +19,16 @@ public class DartBehavior : MonoBehaviour
         string tag = colliderObj.gameObject.tag; 
 
         if (tag == "Player") {
-            PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>(); 
+            PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>();
+            PlayerStatus status = colliderObj.gameObject.GetComponent<PlayerStatus>();
             if (gameObject.tag == "Normal Dart"){
-                Debug.Log("Player hit with a normal dart"); 
+                Debug.Log("Poison not");
+                status.subtractHealth(20f);
             } else if (gameObject.tag == "Poison Dart") {
-                Debug.Log("Player got the big sicc");
+                Debug.Log("Poison");
+                status.subtractHealth(5f);
+                status.addCondition("poisoned", 10f);
+                GameObject.Find("GameAnnouncements").GetComponent<PopupManager>().playerPoison("POISONED", 3f);
             }
         }
         Destroy(gameObject); 
