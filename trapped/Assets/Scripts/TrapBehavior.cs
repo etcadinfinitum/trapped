@@ -94,7 +94,8 @@ public class TrapBehavior : MonoBehaviour
             PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>(); 
             if (player != null){
                 if (this.gameObject.tag == "Stun Trap"){
-                    Debug.Log("Player Stunned!"); 
+                    Debug.Log("Player Stunned!");
+                    colliderObj.gameObject.GetComponent<PlayerStatus>().subtractHealth(10);
                     player.GetStunned();
                 } else if (this.gameObject.tag == "Tele Trap") {
                     Debug.Log("Player Teleported!"); 
