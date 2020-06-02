@@ -8,17 +8,22 @@ public class GoalBehavior : MonoBehaviour
     private int totalInGoal = 0;
     public GameObject teleportLocation;
     private GameObject player;
+
+    private GameObject[] alivePlayers;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+        alivePlayers = GameObject.FindGameObjectsWithTag("Player");
     }
 
     private void Update()
     {
         //check if all players are in goal
-        if(player.GetComponent<Multiplayer2D>().GetTotalPlayerCount() == totalInGoal)
+        if (player.GetComponent<Multiplayer2D>().GetTotalPlayerCount() == totalInGoal)
         {
             if (teleportLocation != null)
             {
@@ -58,5 +63,6 @@ public class GoalBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         GameObject.Find("Player").transform.position = new Vector3(teleportLocation.transform.position.x, teleportLocation.transform.position.y, 0);
+        player.GetComponent<PlayerDeath>().levelComplete = true;
     }
 }
