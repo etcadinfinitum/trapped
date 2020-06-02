@@ -5,13 +5,15 @@ using UnityEngine.Tilemaps;
 public class VisionBehavior : MonoBehaviour {
 
     bool blind = false;
-    Tilemap blindMap = null;
+    int fullSightRadius = 50;
+    int noSightRadius = 0;
+    int blindSightRadius = 3;
+    SpriteMask mask = null;
     bool mutex = false;
     float nextChange = 3f;
 
     void Start() {
-        // give 1/3 chance that player is vision impaired at start
-        blindMap = GameObject.Find("Blinder").GetComponent<Tilemap>();
+        mask = GameObject.Find("PlayerMask").GetComponent<SpriteMask>();
         SetNextVisionChange();
     }
 
@@ -82,28 +84,23 @@ public class VisionBehavior : MonoBehaviour {
     }
 
     IEnumerator FadeVisionOut() {
-        // fade from current alpha to alpha of 1 (full color, producing a black map)
-        // Perform fade over half a second.
-
-        float alpha = blindMap.color.a;
-        for (float a = alpha; a <= 1f; a += ((1f - alpha) / 10f)) {
-            Color c = new Color(0, 0, 0, a);
-            blindMap.color = c;
+        // fade from current mask size to mask size of 3 (or whatever blindSightRadius is)
+        float size = mask.transform.localScale.x;
+        // perform fade over 1 second.
+        for (float sz = size; sz > blindSightRadius; sz -= ((size - blindSightRadius) / 20f)) {
+            mask.transform.localScale = new Vector3(sz, sz, 1);
             yield return new WaitForSeconds(0.05f);
         }
-        blindMap.color = new Color(0, 0, 0, 1f);
     }
 
     IEnumerator FadeVisionIn() {
-        // fade from current alpha to alpha of 0 (no color, producing a translucent map)
-        // Perform fade over half a second.
-        float alpha = blindMap.color.a;
-        for (float a = alpha; a >= 0f; a -= (alpha / 10f)) {
-            Color c = new Color(0, 0, 0, a);
-            blindMap.color = c;
+        // fade from current mask size to mask size of 3 (or whatever blindSightRadius is)
+        float size = mask.transform.localScale.x;
+        // perform fade over 1 second.
+        for (float sz = size; sz < fullSightRadius; sz -= ((size - fullSightRadius) / 20f)) {
+            mask.transform.localScale = new Vector3(sz, sz, 1);
             yield return new WaitForSeconds(0.05f);
         }
-        blindMap.color = new Color(0, 0, 0, 0f);
     }
 
 }
