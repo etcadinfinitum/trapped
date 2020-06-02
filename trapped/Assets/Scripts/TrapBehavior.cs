@@ -33,11 +33,11 @@ public class TrapBehavior : MonoBehaviour
         Color color = gameObject.GetComponent<SpriteRenderer>().color; 
         if (active) { //Decrement by 0.2 each step 
             collider.enabled = false ; 
-            Debug.Log("WEHIQEH");
+            //Debug.Log("WEHIQEH");
             color.a -= 0.2f; 
         } else { //Increment by 0.2 each step. 
             color.a += 0.2f; 
-            Debug.Log("Weeeeeeeeee");
+            //Debug.Log("Weeeeeeeeee");
         }
         gameObject.GetComponent<SpriteRenderer>().color = color; 
         if (color.a >= 1.0f){
