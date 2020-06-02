@@ -12,7 +12,7 @@ public class DistanceHealth : MonoBehaviour {
     PlayerStatus healthData = null;
     PopupManager announcer = null;
     bool tooFar = false;
-    public float acceptableDistance = 8;
+    public float acceptableDistance = 5;
 
     void Start() {
         player = GameObject.Find("Player");
@@ -30,13 +30,17 @@ public class DistanceHealth : MonoBehaviour {
         otherPlayers = mpScript.GetOtherPlayers();
         // get midpoint vector
         Vector3 pos = player.transform.position;
-        Debug.Log("Count of other players: " + otherPlayers.Count);
+        Debug.Log("Current player's position: " + pos);
         foreach (GameObject p in otherPlayers) {
+            Debug.Log("Other player position: " + p.transform.position);
             pos += p.transform.position;
         }
         // get magnitude of distance
         Vector3 midpoint = pos / (otherPlayers.Count + 1);
-        float dist = (midpoint - pos).magnitude;
+        Debug.Log("Midpoint position: " + midpoint);
+        Vector3 distVec = midpoint - player.transform.position;
+        Debug.Log("Distance vector from midpoint: " + distVec);
+        float dist = distVec.magnitude;
         Debug.Log("Distance from player midpoint: " + dist);
         // check if player is outside acceptable distance from midpoint
         if (dist > acceptableDistance) {
