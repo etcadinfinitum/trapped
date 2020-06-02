@@ -107,13 +107,4 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
-
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if (status.isAlive) {
-            if (collision.gameObject.tag.Equals("Stun Trap")) {
-                status.kill();
-            }
-        }
-    }
-
 }
