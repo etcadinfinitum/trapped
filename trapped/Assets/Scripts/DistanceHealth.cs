@@ -30,18 +30,19 @@ public class DistanceHealth : MonoBehaviour {
         otherPlayers = mpScript.GetOtherPlayers();
         // get midpoint vector
         Vector3 pos = player.transform.position;
-        Debug.Log("Current player's position: " + pos);
+        // Debug.Log("Current player's position: " + pos);
         foreach (GameObject p in otherPlayers) {
             Debug.Log("Other player position: " + p.transform.position);
             pos += p.transform.position;
         }
         // get magnitude of distance
         Vector3 midpoint = pos / (otherPlayers.Count + 1);
-        Debug.Log("Midpoint position: " + midpoint);
+        // Debug.Log("Midpoint position: " + midpoint);
         Vector3 distVec = midpoint - player.transform.position;
-        Debug.Log("Distance vector from midpoint: " + distVec);
+        // Debug.Log("Distance vector from midpoint: " + distVec);
         float dist = distVec.magnitude;
-        Debug.Log("Distance from player midpoint: " + dist);
+        // Debug.Log("Distance from player midpoint: " + dist);
+
         // check if player is outside acceptable distance from midpoint
         if (dist > acceptableDistance) {
             if (!tooFar) {
