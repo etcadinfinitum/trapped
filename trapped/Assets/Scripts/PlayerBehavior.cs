@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System;
 using UnityEngine;
+using WaterRippleForScreens;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -25,12 +26,15 @@ public class PlayerBehavior : MonoBehaviour
         StartCoroutine(stun(player)); 
     }
     IEnumerator stun(PlayerMovement player) {
-        yield return new WaitForSeconds(2); 
+        GameObject.Find("GameAnnouncements").GetComponent<PopupManager>().playerStun("SNARED", 1.5f);
+        yield return new WaitForSeconds(2);
         //Unfreeze the player
         player.enabled = true;
     }
 
     public void Teleport() {
+        GameObject.Find("Main Camera").GetComponent<RippleEffect>().SetNewRipplePosition(new Vector2(Screen.width/2, Screen.height/2));
+        GameObject.Find("GameAnnouncements").GetComponent<PopupManager>().playerTeleport("TELEPORTED", 1.5f);
         transform.position = new Vector3(-7.5f, 1f, 0.5f);
     }
     public void OnTriggerEnter(Collider collider){

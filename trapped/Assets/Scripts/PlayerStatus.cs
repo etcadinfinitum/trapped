@@ -34,14 +34,15 @@ public class PlayerStatus : MonoBehaviour
         public string conditionName = "Default";
         public float duration = 1;
 
-        //List of all conditions we want to support (2 for example)
+        //List of all conditions we want to support (2 for example) to avoid problems
         private List<string> supportedConditions = new List<string> { "slowed", "poisoned" };
 
 
         public Condition(string newName, float newDuration)
         {
-            if (supportedConditions.Contains("newName"))
+            if (supportedConditions.Contains(newName))
             {
+                Debug.Log("Condition " + newName + " given to player for " + newDuration + " seconds.");
                 conditionName = newName;
                 duration = newDuration;
             }
@@ -52,25 +53,15 @@ public class PlayerStatus : MonoBehaviour
             }
         }
 
-        //reduce time on condition and destroy if over
-        void Update()
-        {
-            duration -= Time.deltaTime;
-
-            if(duration <= 0)
-            {
-                Destroy(this.gameObject);
-            }
-        }
 
         //increase the time of a condition
-        public void increaseTime(int newTime)
+        public void increaseTime(float newTime)
         {
             duration += newTime;
         }
 
         //decrease the time of a condition
-        public void reduceTime(int newTime)
+        public void reduceTime(float newTime)
         {
             duration -= newTime;
         }
@@ -78,6 +69,7 @@ public class PlayerStatus : MonoBehaviour
         //destroy a condition
         public void cure()
         {
+            //Debug.Log("Condition cured");
             Destroy(this.gameObject);
         }
     }
@@ -144,11 +136,23 @@ public class PlayerStatus : MonoBehaviour
         {
             if(con.conditionName == "poisoned")
             {
-                subtractHealth(Time.deltaTime / 5); //may need to increase/decrease
+                Debug.Log("Poison working");
+                subtractHealth(Time.deltaTime * 2); //may need to increase/decrease
             }
             if(con.conditionName == "slowed")
             {
                 //implementation TBD
+            }
+
+            if(con.duration <= 0)
+            {
+                conditions.Remove(con);
+                con.cure();
+            }
+            else
+            {
+                con.reduceTime(Time.deltaTime);
+                Debug.Log(con.duration);
             }
         }
     }
