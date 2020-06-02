@@ -46,7 +46,7 @@ public class PlayerDeath : MonoBehaviour
                 died = true;
 
                 //change tag so now the player is not needed in the goal to finish level
-                gameObject.tag = "Zombie";
+                //gameObject.tag = "Zombie";
 
                 //Change the player sprite to zombie.
                 spriteRenderer.sprite = zombieFace;
@@ -61,14 +61,16 @@ public class PlayerDeath : MonoBehaviour
                 status.revive();
 
                 //nesscary to register player for next level
-                gameObject.tag = "Player";
+                //gameObject.tag = "Player";
                 levelComplete = false;
+                died = false;
             }
 
         } else { //player is alive
 
             if(levelComplete) { //if the level gets completed want to make sure we still reset this just like before ^
                 levelComplete = false;
+                died = false;
             }
 
         }
