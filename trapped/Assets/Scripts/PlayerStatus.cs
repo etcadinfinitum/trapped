@@ -195,4 +195,10 @@ public class PlayerStatus : MonoBehaviour
     {
         setHealth(0f);
     }
+
+    public void revive()
+    {
+        setHealth(100);
+        isAlive = true;
+    }
 }
