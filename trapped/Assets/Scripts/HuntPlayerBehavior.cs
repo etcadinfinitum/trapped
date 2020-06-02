@@ -5,10 +5,13 @@ using UnityEngine.AI;
 
 public class HuntPlayerBehavior : MonoBehaviour
 {
+    public int damageOnHit = 25;
     private GameObject player; //for access to multiplayer2D script
     private GameObject target = null;
     private NavMeshAgent agent = null;
     private bool playerNotFound = true;
+    private Rigidbody2D rb;
+    private Vector2 startPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,8 @@ public class HuntPlayerBehavior : MonoBehaviour
         // stops the agent from slowing down around corners
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         player = GameObject.Find("Player");
+        rb = this.GetComponent<Rigidbody2D>();
+        startPosition = rb.transform.position;
     }
 
     // Update is called once per frame
@@ -41,6 +46,25 @@ public class HuntPlayerBehavior : MonoBehaviour
             }
 
         }
+        //rb.position = agent.transform.position;
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("hit something");
+        if(collision.tag == "Player")
+        {
+            Debug.Log("tag is player");
+            //reset position
+            rb.transform.position = startPosition;
+            collision.GetComponent<PlayerStatus>().subtractHealth(damageOnHit);
+        }
+    }
+
+    //Going to use trigger for now, if we want enemies to push players around while dealing damage we can use collisions
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("collided");
+    //}
 }

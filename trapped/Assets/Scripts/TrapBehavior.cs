@@ -33,11 +33,11 @@ public class TrapBehavior : MonoBehaviour
         Color color = gameObject.GetComponent<SpriteRenderer>().color; 
         if (active) { //Decrement by 0.2 each step 
             collider.enabled = false ; 
-            Debug.Log("WEHIQEH");
+            //Debug.Log("WEHIQEH");
             color.a -= 0.2f; 
         } else { //Increment by 0.2 each step. 
             color.a += 0.2f; 
-            Debug.Log("Weeeeeeeeee");
+            //Debug.Log("Weeeeeeeeee");
         }
         gameObject.GetComponent<SpriteRenderer>().color = color; 
         if (color.a >= 1.0f){
@@ -59,7 +59,7 @@ public class TrapBehavior : MonoBehaviour
                 transformTime = 0.66f; //2/3 of a second seems like a good time
             } else if (timeCooldown == 0){
                 //Either increment or decrement here. 
-                Debug.Log("Beginning state change"); 
+                //Debug.Log("Beginning state change"); 
                 isTransforming = true; 
                 timeCooldown = 3.0f; 
             }
