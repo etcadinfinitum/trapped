@@ -40,7 +40,6 @@ public class DartShooter : MonoBehaviour
     
     public void fire() {
         if (cooldownTimer == 0){
-            FindObjectOfType<AudioManager>().Play("DartShot");
             Vector2 actualBulletDirection = (relativeToRotation) ? (Vector2)(Quaternion.Euler(0, 0, 
             transform.eulerAngles.z) * shootDirection) : shootDirection; 
 

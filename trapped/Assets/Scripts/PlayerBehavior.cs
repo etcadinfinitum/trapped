@@ -22,7 +22,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public void GetStunned(){
         PlayerMovement player = GetComponent<PlayerMovement>(); 
-        player.enabled = false;
+        player.enabled = false; 
         StartCoroutine(stun(player)); 
     }
     IEnumerator stun(PlayerMovement player) {
