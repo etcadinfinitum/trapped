@@ -12,7 +12,8 @@ public class TrapBehavior : MonoBehaviour
     float timeCooldown; //How long before switching states 
     float transformTime; 
     // Start is called before the first frame update
-    float amountFilled; 
+    //float amountFilled; 
+    public Vector2 destination; 
     void Start()
     {
         active = true; //All teleportation traps are active in the beginning 
@@ -20,7 +21,7 @@ public class TrapBehavior : MonoBehaviour
         lastTime = Time.deltaTime; 
         timeCooldown = 3.0f; 
         transformTime = 0.66f; 
-        amountFilled = 1.0f; //Represents how transparent the trap will be. 1 = 100%. 0 = 0% scaling. 
+        //amountFilled = 1.0f; //Represents how transparent the trap will be. 1 = 100%. 0 = 0% scaling. 
         PlayerData[] temp = FindObjectsOfType<PlayerData>();
         players = new PlayerData[temp.Length]; 
         if (players.Length == 0){
@@ -101,7 +102,9 @@ public class TrapBehavior : MonoBehaviour
                 } else if (this.gameObject.tag == "Tele Trap") {
                     Debug.Log("Player Teleported!");
                     FindObjectOfType<AudioManager>().Play("Teleport");
-                    player.Teleport();
+                    player.Teleport(new Vector3(destination[0],
+                        destination[1],
+                        this.transform.position[2]));
                 }
             }
         }

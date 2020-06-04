@@ -32,10 +32,10 @@ public class PlayerBehavior : MonoBehaviour
         player.enabled = true;
     }
 
-    public void Teleport() {
+    public void Teleport(Vector3 destination) {
         GameObject.Find("Main Camera").GetComponent<RippleEffect>().SetNewRipplePosition(new Vector2(Screen.width/2, Screen.height/2));
         GameObject.Find("GameAnnouncements").GetComponent<PopupManager>().playerTeleport("TELEPORTED", 1.5f);
-        transform.position = new Vector3(-7.5f, 1f, 0.5f);
+        transform.position = destination;
     }
     public void OnTriggerEnter(Collider collider){
         Debug.Log("Herm it works now");
