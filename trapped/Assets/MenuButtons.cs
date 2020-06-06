@@ -30,6 +30,7 @@ public class MenuButtons : MonoBehaviour
 
     public void goPlay()
     {
+        FindObjectOfType<AudioManager>().Play("ButtonPress");
         SceneManager.LoadScene("ConnectScreen");
     }
 }

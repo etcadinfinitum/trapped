@@ -8,6 +8,7 @@ public class ConnectButton : MonoBehaviour
     private string myName;
     public void ConnectButtonClick(InputField ipfield)
     {
+        FindObjectOfType<AudioManager>().Play("ButtonPress");
         ip = ipfield.text;
         if (ip != "")
         {
