@@ -20,11 +20,14 @@ public class MenuButtons : MonoBehaviour
 
     public void showHelp()
     {
+        FindObjectOfType<AudioManager>().Play("ButtonPress");
+
         help.SetActive(true);
     }
 
     public void hideHelp()
     {
+        FindObjectOfType<AudioManager>().Play("ButtonPress");
         help.SetActive(false);
     }
 
