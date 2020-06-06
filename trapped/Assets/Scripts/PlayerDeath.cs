@@ -42,6 +42,9 @@ public class PlayerDeath : MonoBehaviour
             //died bool needed so this only happens once per death.
             if (!died) {
 
+                //Play death jingle
+                FindObjectOfType<AudioManager>().Play("PlayerDeath");
+
                 //allow the player to preform the death behaviors
                 died = true;
 
