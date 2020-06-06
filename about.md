@@ -11,7 +11,7 @@ This game was made by the following individuals:
 | TODO  | Denali | TODO | 
 | TODO  | Jayden | TODO |
 | TODO  | Kyle   | TODO |
-| TODO  | Lizzy  | TODO |
+| ![picture of Lizzy]({{ site.url }}/static/images/lizzy.png) | Lizzy  | Lizzy is a current UW Bothell senior and ~~should~~ will be graduating in June 2020. After graudation, she will be joining Google as a software engineer. Her favorite games are TTRPGs, pinball, and (regrettably) Universal Paperclips. She looks forward to expanding her gaming horizons this summer and playing BeatSaber on the Oculus. |
 | TODO  | Victor | TODO |
 
 ## References
