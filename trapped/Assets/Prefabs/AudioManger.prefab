@@ -46,28 +46,42 @@ MonoBehaviour:
   sounds:
   - name: Stun
     clip: {fileID: 8300000, guid: e371daed462bbab448b90f438f587276, type: 3}
-    volume: 0.821
+    volume: 0.5
     pitch: 1
     priority: 128
     loop: 0
     source: {fileID: 0}
   - name: Teleport
     clip: {fileID: 8300000, guid: 0b9f13ce83e196b4cb928bf3e352edd4, type: 3}
-    volume: 0.821
+    volume: 0.5
     pitch: 1
     priority: 128
     loop: 0
     source: {fileID: 0}
   - name: PlayerDeath
     clip: {fileID: 8300000, guid: 97e72b71091b16949abcef8c5a86f3da, type: 3}
-    volume: 0.821
+    volume: 0.5
     pitch: 1
     priority: 128
     loop: 0
     source: {fileID: 0}
   - name: DartShot
     clip: {fileID: 8300000, guid: f1fc8cbf7ca204a49890e92afcee7e56, type: 3}
-    volume: 0.821
+    volume: 0.5
+    pitch: 1
+    priority: 128
+    loop: 0
+    source: {fileID: 0}
+  - name: Ambiance
+    clip: {fileID: 8300000, guid: 807c640cccd4bfb4d9970dd89d80fdba, type: 3}
+    volume: 0.25
+    pitch: 1
+    priority: 128
+    loop: 1
+    source: {fileID: 0}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 77bfb6dc386c6774dbe4890fae74ae5b, type: 3}
+    volume: 0.5
     pitch: 1
     priority: 128
     loop: 0
