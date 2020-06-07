@@ -8,7 +8,7 @@ public class GlobalBehavior : MonoBehaviour
 
     private string playerName;
     
-    
+    private string gameCode;    
 
     // Start is called before the first frame update
 
@@ -61,5 +61,13 @@ public class GlobalBehavior : MonoBehaviour
     public string GetName()
     {
         return playerName;
+    }
+
+    public void SetGameCode(string code) {
+        this.gameCode = code;
+    }
+
+    public string GetGameCode() {
+        return this.gameCode;
     }
 }
