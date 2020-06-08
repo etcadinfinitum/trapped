@@ -3,10 +3,22 @@ const WebSocket = require('ws');
 // create new websocket server
 const wss = new WebSocket.Server({port: 8000});
 
+/*
+  games = {
+    gameCode: true or false. True indicates game is in progress.
+    }
+    ...
+  }
+*/
+
+games = {};
+
 // empty object to store all players
+// players must also contain gameCode 
 var players = {};
 
-// player number based on order of connection to server, increases on client connect, decreases on disconnect
+// player number based on order of connection to server.
+// increases on client connect, decreases on disconnect
 var connectOrder = 1;
 
 // on new client connect
@@ -29,9 +41,10 @@ wss.on('connection', function connection (client) {
   // on new message recieved
   client.on('message', function incoming (data) {
     // get data from string
-    var [udid, x, y, z] = data.toString().split('\t');
+    var [gameCode, udid, x, y, z] = data.toString().split('\t');
     // store data to players object
     players[udid] = {
+      session: gameCode,
       position: {
         x: parseFloat(x),
         y: parseFloat(y),
@@ -42,6 +55,13 @@ wss.on('connection', function connection (client) {
     };
     // save player udid to the client
     client.udid = udid;
+    client.gameCode = gameCode;
+    if (!games.hasOwnProp(gameCode)) {
+      games[gameCode] = false;
+    } else if (games[gameCode]) {
+      // indicates game is in progress; do not interrupt
+      client.close();
+    }
   });
   
   client.on('close', function incoming(code, reason) {
@@ -68,7 +88,7 @@ function broadcastUID(uid, modeType){
           return;
       }
       // filter out current player by client.udid
-      var otherPlayers = Object.keys(players).filter(udid => udid !== client.udid);
+      var otherPlayers = Object.keys(players).filter(session => session === client.gameCode).filter(udid => udid !== client.udid);
       // create array from the rest
       client.send(JSON.stringify(message));
   });
@@ -81,8 +101,15 @@ function broadcastUpdate () {
     if (client.readyState !== WebSocket.OPEN) {
         return;
     }
+    console.log("Client's game session is active? " + games[client.gameCode] +"\tGame code is: " + client.gameCode);
+    // filter clients who have not begun game
+    if (!games[client.gameCode]) {
+        return;
+    }
+    // filter clients who are not part of client's game session
+    var gamePlayers = Object.keys(players).filter(session => session === client.gameCode);
     // filter out current player by client.udid
-    var otherPlayers = Object.keys(players).filter(udid => udid !== client.udid);
+    var otherPlayers = Object.keys(gamePlayers).filter(udid => udid !== client.udid);
     // create array from the rest
     var otherPlayersData = otherPlayers.map(udid => players[udid]);
     // send it

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ public class Multiplayer2D : MonoBehaviour
 
     // define public game object used to visualize other players
     public GameObject otherPlayerObject;
+    public GameObject player;
 
     private Vector3 prevPosition;
     private List<GameObject> otherPlayers = new List<GameObject>();
@@ -45,19 +47,21 @@ public class Multiplayer2D : MonoBehaviour
 
     private WebSocket w = null;
 
-    IEnumerator Start()
-    {
+    void Awake() {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
 
-        // get player
-        GameObject player = GameObject.Find("Player");
-        totalNumberOfPlayers++;
-
+    IEnumerator Start() {
+        /**
+         * First and foremost, get the client connected to the server.
+         * This is scene-agnostic and should happen immediately on 
+         * script instantiation (ie in LobbyScene)
+         */
 
         // get global controller, use IP in global controller
         globalController = GameObject.Find("GlobalController");
         ip = globalController.GetComponent<GlobalBehavior>().GetIP();
-        player.GetComponent<PlayerData>().SetPlayerName(globalController.GetComponent<GlobalBehavior>().GetName());
         if (ip == null) //if ip was set on connection scene, use that. else use default
         {
             #if (UNITY_EDITOR)
@@ -77,18 +81,30 @@ public class Multiplayer2D : MonoBehaviour
         // generate random ID to have idea for each client (feels unsecure)
         System.Guid myGUID = System.Guid.NewGuid();
 
-        player.GetComponent<PlayerData>().SetGuid(myGUID);
-
         // wait for messages
         while (true)
         {
+            Debug.Log("Active scene is: " + SceneManager.GetActiveScene().name);
+            if (SceneManager.GetActiveScene().name == "Maze1" && player == null) {
+                // Give the scene some time to load all game objects
+                // Big Hack Energy
+                yield return new WaitForSeconds(0.3f);
+                Debug.Log("Locating player object");
+                // get player
+                player = GameObject.Find("Player");
+                totalNumberOfPlayers++;
+                player.GetComponent<PlayerData>().SetPlayerName(globalController.GetComponent<GlobalBehavior>().GetName());
+                player.GetComponent<PlayerData>().SetGuid(myGUID);
+            }
+
+
             // read message
             string message = w.RecvString();
             
             // check if message is not empty
             if (message != null)
             {
-                //Debug.Log("RECEIVED FROM WEBSOCKETS: " + message);
+                Debug.Log("RECEIVED FROM WEBSOCKETS: " + message);
 
                 // DESERIALIZE RECEIVED DATA
                 // currently data can come in two forms, player movement or player uid + mode
@@ -120,7 +136,7 @@ public class Multiplayer2D : MonoBehaviour
             }
 
             // check if player moved
-            if (prevPosition != player.transform.position)
+            if (player != null && prevPosition != player.transform.position)
             {
                 // send update if position had changed
                 w.SendString(myGUID + "\t" + player.transform.position.x + "\t" + player.transform.position.y + "\t" + player.transform.position.z);
