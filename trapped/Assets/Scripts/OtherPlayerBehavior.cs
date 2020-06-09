@@ -8,24 +8,21 @@ public class OtherPlayerBehavior : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite zombieFace;
     public Sprite face;
-    private PlayerDeath status;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        status = GameObject.Find("Player").GetComponent<PlayerDeath>();
+        //status = GameObject.Find("Player").GetComponent<PlayerDeath>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (status.levelComplete)
-        {
-            MakeAlive();
-        }
+
     }
 
     public void MakeDead()
@@ -39,6 +36,6 @@ public class OtherPlayerBehavior : MonoBehaviour
     public void MakeAlive()
     {
         spriteRenderer.sprite = face;
-        spriteRenderer.color = new Color(51, 94, 255, 255);
+        //spriteRenderer.color = new Color(51, 94, 255, 255);
     }
 }

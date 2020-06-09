@@ -267,4 +267,13 @@ public class Multiplayer2D : MonoBehaviour
             deadPlayer.GetComponent<OtherPlayerBehavior>().MakeDead();
         }
     }
+
+    //call this on map change
+    public void ReviveOtherPlayers()
+    {
+        foreach (var player in otherPlayers)
+        {
+            player.GetComponent<OtherPlayerBehavior>().MakeAlive();
+        }
+    }
 }
