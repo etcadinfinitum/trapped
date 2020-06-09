@@ -266,6 +266,25 @@ public class Multiplayer2D : MonoBehaviour
             GameObject deadPlayer = GetPlayer(deathMessageID);
             deadPlayer.GetComponent<OtherPlayerBehavior>().MakeDead();
         }
+
+        bool allDead = true; //assume all is dead, change upon looping through each player
+        //check if all players dead
+        foreach (var player in otherPlayers)
+        {
+            if (!player.GetComponent<PlayerDeath>().isDead())
+            {
+                allDead = false;
+            }
+        }
+        if (!player.GetComponent<PlayerDeath>().isDead()) allDead = false;
+
+        if (allDead)
+        {
+            //wait for a second, go to credits
+            Debug.Log("all dead");
+        }
+
+        
     }
 
     //call this on map change

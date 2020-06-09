@@ -121,4 +121,9 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
+    public bool isDead()
+    {
+        return died;
+    }
+
 }
