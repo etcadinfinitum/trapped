@@ -17,6 +17,10 @@ public class PlayerDeath : MonoBehaviour
     public GameObject[] map3SpawnPoints;
     public GameObject[] map4SpawnPoints;
 
+    private GameObject player;
+    public float deathSpeed = 3;
+    public float originalSpeed;
+
     public void Start() {
         //Reference the status script values
         status = GetComponent<PlayerStatus>();
@@ -33,6 +37,9 @@ public class PlayerDeath : MonoBehaviour
         //should start as false
         died = false;
         levelComplete = false;
+
+        player = GameObject.Find("Player");
+        originalSpeed = player.GetComponent<PlayerMovement>().moveSpeed;
     }
 
     public void Update() {
@@ -54,15 +61,19 @@ public class PlayerDeath : MonoBehaviour
                 //Change the player sprite to zombie.
                 spriteRenderer.sprite = zombieFace;
 
+                GameObject.Find("Player").GetComponent<Multiplayer2D>().BroadcastDeath();
+
+                player.GetComponent<PlayerMovement>().moveSpeed = deathSpeed;
+
                 //respawn at semi-random location on current map
-                respawn();
+                //respawn();
             }
 
             //when level complete revive player and change sprite back only once.
             if(levelComplete) {
                 spriteRenderer.sprite = face;
                 status.revive();
-
+                player.GetComponent<PlayerMovement>().moveSpeed = originalSpeed;
                 //nesscary to register player for next level
                 //gameObject.tag = "Player";
                 levelComplete = false;
@@ -108,6 +119,11 @@ public class PlayerDeath : MonoBehaviour
             int i = Random.Range(0, map4SpawnPoints.Length);
             transform.position = map4SpawnPoints[i].GetComponent<Transform>().position;
         }
+    }
+
+    public bool isDead()
+    {
+        return died;
     }
 
 }

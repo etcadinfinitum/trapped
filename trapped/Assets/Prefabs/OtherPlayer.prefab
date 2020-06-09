@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e210958985dac43b71b06599469f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  zombieFace: {fileID: 21300000, guid: 0440c76c393a7de4f9c7a4ddacdc9d33, type: 3}
+  face: {fileID: 21300000, guid: 42921b99523d86646a0b2ff8b26c0bde, type: 3}
 --- !u!114 &114458927016289788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +160,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee183ba1cc1eed039776edd8c2355b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myID: 
+  myPlayerName: 
