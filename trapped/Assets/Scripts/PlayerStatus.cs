@@ -18,6 +18,7 @@ public class PlayerStatus : MonoBehaviour
     public Slider mySlider;
 
     VisionBehavior playerVision;
+    PopupManager announcer = null;
 
     /*
      * Condition: A positive or negative affliction given to player that has a continuous effect until its duration is 0 or it is cured
@@ -88,6 +89,7 @@ public class PlayerStatus : MonoBehaviour
 
 
         playerVision = GameObject.Find("Player").GetComponent<VisionBehavior>();
+        announcer = GameObject.Find("TextPopup").GetComponent<PopupManager>();
 
         string newName = ("Player" + gameObject.GetComponent<PlayerData>().GetPlayerNumber());
 
@@ -187,6 +189,7 @@ public class PlayerStatus : MonoBehaviour
     {
         playerVision.SetCurrentRadius(-amount, maxHealth);
         playerVision.BlindTemporarily(amount * 2);
+        announcer.createClientPopup("OUCH!", 1.5f);
         health -= amount;
     }
 

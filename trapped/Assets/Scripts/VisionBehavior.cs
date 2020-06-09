@@ -10,8 +10,8 @@ public class VisionBehavior : MonoBehaviour {
     float noSightRadius = 0f;
     float blindSightRadius = 3f;
     float currSightRadius;
-    SpriteMask mask = null;
     bool mutex = false;
+    SpriteMask mask = null;
     float nextChange = 3f;
 
     void Start() {
@@ -23,6 +23,7 @@ public class VisionBehavior : MonoBehaviour {
         if (this.blind && Time.time > this.nextChange) {
             this.blind = false;
             StartCoroutine("FadeVisionIn");
+            mutex = true;
         }
     }
 
@@ -31,6 +32,8 @@ public class VisionBehavior : MonoBehaviour {
     }
 
     public void BlindTemporarily(float duration) {
+        if (mutex) return;
+        mutex = true;
         this.blind = true;
         this.nextChange = Time.time + 5f;
         StartCoroutine("FadeVisionOut");

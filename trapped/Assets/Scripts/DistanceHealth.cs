@@ -18,7 +18,7 @@ public class DistanceHealth : MonoBehaviour {
         player = GameObject.Find("Player");
         mpScript = player.GetComponent<Multiplayer2D>();
         healthData = player.GetComponent<PlayerStatus>();
-        announcer = GameObject.Find("GameAnnouncement").GetComponent<PopupManager>();
+        announcer = GameObject.Find("GameAnnouncements").GetComponent<PopupManager>();
         // get list of other players
         otherPlayers = mpScript.GetOtherPlayers();
     }
@@ -49,7 +49,7 @@ public class DistanceHealth : MonoBehaviour {
                 tooFar = true;
                 Debug.Log("Player is too far away from others!");
                 // queue message
-                announcer.createPopup("Return to your team or you will wither!", 1.5f);
+                announcer.createClientPopup("Return to team!", 1.5f);
             }
             // decrement health
             healthData.health -= Mathf.Ceil(dist / 10f);
@@ -58,7 +58,7 @@ public class DistanceHealth : MonoBehaviour {
                 tooFar = false;
                 Debug.Log("Player is back within range!");
                 // queue message
-                announcer.createPopup("You've returned and the danger has passed!", 0.5f);
+                announcer.createClientPopup("Safe with team!", 0.5f);
             }
         }
         nextCheck = Time.time + 0.5f;
