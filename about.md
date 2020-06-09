@@ -27,7 +27,6 @@ https://opengameart.org/content/pixel-dungeon-graphics-by-watabou
 
 Used for map tileset
 
-
 Screen Ripple Effect
 https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/water-ripple-for-screens-83430
 
@@ -50,8 +49,6 @@ Pixel Font
 https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
 
 Used the pixel font for most text in the game
-
-TODO :bug: add asset resource
 
 ## Description
 

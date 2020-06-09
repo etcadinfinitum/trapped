@@ -40,6 +40,7 @@ public class GoalBehavior : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("An additional player has entered the goal");
             totalInGoal++;
             //Debug.Log("Triggered with goal" + totalInGoal);
         }
@@ -49,6 +50,7 @@ public class GoalBehavior : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("An additional player has left the goal");
             totalInGoal--;
             //Debug.Log("Exited with goal" + totalInGoal);
         }
@@ -62,7 +64,8 @@ public class GoalBehavior : MonoBehaviour
     IEnumerator TeleportPlayers()
     {
         yield return new WaitForSeconds(1);
-        GameObject.Find("Player").transform.position = new Vector3(teleportLocation.transform.position.x, teleportLocation.transform.position.y, 0);
+        player.transform.position = new Vector3(teleportLocation.transform.position.x, teleportLocation.transform.position.y, 0);
         player.GetComponent<PlayerDeath>().levelComplete = true;
+        player.GetComponent<Multiplayer2D>().ReviveOtherPlayers();
     }
 }

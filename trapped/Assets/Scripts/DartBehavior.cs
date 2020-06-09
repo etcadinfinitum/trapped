@@ -23,10 +23,10 @@ public class DartBehavior : MonoBehaviour
             PlayerStatus status = colliderObj.gameObject.GetComponent<PlayerStatus>();
             if (gameObject.tag == "Normal Dart"){
                 Debug.Log("Poison not");
-                status.subtractHealth(20f);
-            } else if (gameObject.tag == "Poison Dart") {
+                status.subtractHealth(10f);
+            } else {
                 Debug.Log("Poison");
-                status.subtractHealth(5f);
+                status.subtractHealth(1f);
                 status.addCondition("poisoned", 10f);
                 GameObject.Find("GameAnnouncements").GetComponent<PopupManager>().playerPoison("POISONED", 3f);
             }

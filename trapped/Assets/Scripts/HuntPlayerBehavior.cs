@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class HuntPlayerBehavior : MonoBehaviour
 {
-    public int damageOnHit = 25;
+    public int damageOnHit = 15;
     private GameObject player; //for access to multiplayer2D script
     private GameObject target = null;
     private NavMeshAgent agent = null;
@@ -52,10 +52,10 @@ public class HuntPlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit something");
+        // Debug.Log("hit something");
         if (collision.tag == "Player")
         {
-            Debug.Log("tag is player");
+            //Debug.Log("tag is player");
             //reset position
             rb.transform.position = startPosition;
             collision.GetComponent<PlayerStatus>().subtractHealth(damageOnHit);
