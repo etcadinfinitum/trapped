@@ -140,9 +140,12 @@ function broadcastUpdate () {
         return;
     }
     // filter clients who are not part of client's game session
-    var gamePlayers = Object.keys(players).filter(session => session === client.gameCode);
+    var gamePlayers = Object.keys(players).filter(udid => players[udid].session === client.gameCode);
+    // console.log("Game players: " + JSON.stringify(gamePlayers, null, 4));
+    typeof(gamePlayers);
     // filter out current player by client.udid
-    var otherPlayers = Object.keys(gamePlayers).filter(udid => udid !== client.udid);
+    var otherPlayers = gamePlayers.filter(udid => udid !== client.udid);
+    // console.log("Other players in game: " + JSON.stringify(otherPlayers, null, 4));
     // create array from the rest
     var otherPlayersData = otherPlayers.map(udid => players[udid]);
     // send it
