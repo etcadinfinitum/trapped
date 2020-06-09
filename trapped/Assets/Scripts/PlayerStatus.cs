@@ -89,7 +89,7 @@ public class PlayerStatus : MonoBehaviour
 
 
         playerVision = GameObject.Find("Player").GetComponent<VisionBehavior>();
-        announcer = GameObject.Find("TextPopup").GetComponent<PopupManager>();
+        announcer = GameObject.Find("GameAnnouncements").GetComponent<PopupManager>();
 
         string newName = ("Player" + gameObject.GetComponent<PlayerData>().GetPlayerNumber());
 
