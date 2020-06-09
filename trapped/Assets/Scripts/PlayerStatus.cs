@@ -17,6 +17,8 @@ public class PlayerStatus : MonoBehaviour
     //Health bar UI elements
     public Slider mySlider;
 
+    VisionBehavior playerVision;
+
     /*
      * Condition: A positive or negative affliction given to player that has a continuous effect until its duration is 0 or it is cured
      * Stored in List "conditions" and effects are calculated also in the PlayerStatus script
@@ -85,7 +87,7 @@ public class PlayerStatus : MonoBehaviour
         mySlider = myHealthbar.GetComponent<Slider>();
 
 
-
+        playerVision = GameObject.Find("Player").GetComponent<VisionBehavior>();
 
         string newName = ("Player" + gameObject.GetComponent<PlayerData>().GetPlayerNumber());
 
@@ -183,6 +185,8 @@ public class PlayerStatus : MonoBehaviour
 
     public void subtractHealth(float amount)
     {
+        playerVision.SetCurrentRadius(-amount, maxHealth);
+        playerVision.BlindTemporarily(amount * 2);
         health -= amount;
     }
 
