@@ -58,7 +58,10 @@ public class HuntPlayerBehavior : MonoBehaviour
             //Debug.Log("tag is player");
             //reset position
             rb.transform.position = startPosition;
-            collision.GetComponent<PlayerStatus>().subtractHealth(damageOnHit);
+            if (collision.name == "Player")
+            {
+                collision.GetComponent<PlayerStatus>().subtractHealth(damageOnHit);
+            }
         }
     }
 
