@@ -5,15 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    private Multiplayer2D sceneChangeScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        sceneChangeScript = GameObject.Find("NetworkingController").GetComponent<Multiplayer2D>();
     }
 
     public void StartGameButtonClick() {
         // TODO: send message to everyone else
-        SceneManager.LoadScene(2);
+        sceneChangeScript.InitiateSwitchToMazeScene();
     }
 
     // Update is called once per frame

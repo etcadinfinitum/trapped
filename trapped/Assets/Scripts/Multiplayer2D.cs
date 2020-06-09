@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ public class Multiplayer2D : MonoBehaviour
     private GameObject globalController;
 
     private int totalNumberOfPlayers;
+    private int joinOrder;
 
     private string ip;
     private int port = 8000;
@@ -81,10 +83,19 @@ public class Multiplayer2D : MonoBehaviour
         // generate random ID to have idea for each client (feels unsecure)
         System.Guid myGUID = System.Guid.NewGuid();
 
+        string gameCode = globalController.GetComponent<GlobalBehavior>().GetGameCode();
+        
+        // send update if position had changed
+        w.SendString(gameCode + "\t" + myGUID + "\t0\t0\t0");
+
+        if (SceneManager.GetActiveScene().name == "LobbyScreen") {
+            GameObject.Find("JoinCodeText").GetComponent<Text>().text = "Join code is: " + gameCode;
+        }
+
         // wait for messages
         while (true)
         {
-            Debug.Log("Active scene is: " + SceneManager.GetActiveScene().name);
+            // Debug.Log("Active scene is: " + SceneManager.GetActiveScene().name);
             if (SceneManager.GetActiveScene().name == "Maze1" && player == null) {
                 // Give the scene some time to load all game objects
                 // Big Hack Energy
@@ -95,6 +106,7 @@ public class Multiplayer2D : MonoBehaviour
                 totalNumberOfPlayers++;
                 player.GetComponent<PlayerData>().SetPlayerName(globalController.GetComponent<GlobalBehavior>().GetName());
                 player.GetComponent<PlayerData>().SetGuid(myGUID);
+                player.GetComponent<PlayerData>().SetPlayerNumber(joinOrder);
             }
 
 
@@ -125,7 +137,11 @@ public class Multiplayer2D : MonoBehaviour
                         //Debug.Log("Message was mode 1 (join order) " + message);
                         ReceiveJoinOrder(joinOrderMessage);
                         break;
-                }          
+                    case '2':
+                        Debug.Log("Message was mode 2 (start game) " + message);
+                        SwitchToMazeScene();
+                        break;
+                }
             }
 
             // if connection error, break the loop
@@ -139,7 +155,7 @@ public class Multiplayer2D : MonoBehaviour
             if (player != null && prevPosition != player.transform.position)
             {
                 // send update if position had changed
-                w.SendString(myGUID + "\t" + player.transform.position.x + "\t" + player.transform.position.y + "\t" + player.transform.position.z);
+                w.SendString(gameCode + "\t" + myGUID + "\t" + player.transform.position.x + "\t" + player.transform.position.y + "\t" + player.transform.position.z);
                 prevPosition = player.transform.position;
             }
 
@@ -150,6 +166,16 @@ public class Multiplayer2D : MonoBehaviour
         Debug.Log("Error occured, closing connection");
         w.Close();
 
+    }
+
+    public void InitiateSwitchToMazeScene() {
+        Debug.Log("Button press detected; starting game!");
+        w.SendString("begin");
+    }
+
+    void SwitchToMazeScene() {
+        Debug.Log("Received message from server to start game! Loading Maze1 Scene...");
+        SceneManager.LoadScene(2);
     }
 
     void UpdateOnReceiveMovement(PlayersPositions data)
@@ -218,7 +244,11 @@ public class Multiplayer2D : MonoBehaviour
 
     void ReceiveJoinOrder(Message m)
     {
-        GameObject.Find("Player").GetComponent<PlayerData>().SetPlayerNumber(int.Parse(m.id));
+        this.joinOrder = int.Parse(m.id);
+        if (player != null) {
+            player.GetComponent<PlayerData>().SetPlayerNumber(this.joinOrder);
+        }
+        // GameObject.Find("Player").GetComponent<PlayerData>().SetPlayerNumber(int.Parse(m.id));
         //Debug.Log("set player join number to " + GameObject.Find("Player").GetComponent<PlayerData>().GetID());
     }
 

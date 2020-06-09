@@ -31,17 +31,35 @@ wss.on('connection', function connection (client) {
   client.order = connectOrder;
   console.log("Client's join order: " + client.order);
   connectOrder++;
-  //send join order to client
-  var discomessage = {
-        mode: 1,
-        id: client.order
-  };
-  client.send(JSON.stringify(discomessage));
   
   // on new message recieved
   client.on('message', function incoming (data) {
+    if (data.toString() === "begin") {
+        console.log("Client pressed start game button; notifying all clients for game session " + client.gameCode);
+        games[client.gameCode] = true;
+        beginForAllClients(client.gameCode);
+        return;
+    }
     // get data from string
     var [gameCode, udid, x, y, z] = data.toString().split('\t');
+    
+    // process initial data transmission
+    if (!players.hasOwnProperty(udid)) {
+        console.log("Processing first connection for game " + gameCode + " and client UDID " + udid);
+        // 
+        if (!games.hasOwnProperty(gameCode)) {
+          games[gameCode] = false;
+          //send join order to client
+          var discomessage = {
+            mode: 1,
+            id: client.order
+          };
+          client.send(JSON.stringify(discomessage));
+        } else if (games[gameCode]) {
+          // indicates game is in progress; do not interrupt
+          client.close();
+        }
+    }
     // store data to players object
     players[udid] = {
       session: gameCode,
@@ -56,12 +74,6 @@ wss.on('connection', function connection (client) {
     // save player udid to the client
     client.udid = udid;
     client.gameCode = gameCode;
-    if (!games.hasOwnProp(gameCode)) {
-      games[gameCode] = false;
-    } else if (games[gameCode]) {
-      // indicates game is in progress; do not interrupt
-      client.close();
-    }
   });
   
   client.on('close', function incoming(code, reason) {
@@ -94,6 +106,28 @@ function broadcastUID(uid, modeType){
   });
 }
 
+function beginForAllClients(gameCode) {
+    console.log("Starting game with game code " + gameCode);
+    wss.clients.forEach(function each (client) {
+      console.log("Processing client with UDID " + client.udid + " and game code " + client.gameCode);
+      // filter disconnected clients
+      if (client.readyState !== WebSocket.OPEN) {
+          return;
+      }
+      if (client.gameCode !== gameCode) {
+          return;
+      }
+      // filter player data
+      // var sessionPlayers = Object.keys(players).filter(session => session === client.gameCode);
+      console.log("Sending begin message to client!");
+      var msg = {
+          mode: 2,
+          id: "begin",
+      };
+      client.send(JSON.stringify(msg));
+    });
+}
+
 function broadcastUpdate () {
   // broadcast messages to all clients
   wss.clients.forEach(function each (client) {
@@ -101,7 +135,6 @@ function broadcastUpdate () {
     if (client.readyState !== WebSocket.OPEN) {
         return;
     }
-    console.log("Client's game session is active? " + games[client.gameCode] +"\tGame code is: " + client.gameCode);
     // filter clients who have not begun game
     if (!games[client.gameCode]) {
         return;
