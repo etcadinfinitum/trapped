@@ -69288,6 +69288,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cabbec49ee49244cb457f3bbabdee84, type: 3}
+--- !u!1 &412679885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5995943801474278694, guid: edb4a28290ebc1743a3504ec19b59c74,
+    type: 3}
+  m_PrefabInstance: {fileID: 1292687602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &445961680 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798756631907606700, guid: 00b73dcc18dd3424a9edc135636fc633,
@@ -69419,6 +69425,8 @@ MonoBehaviour:
   map2SpawnPoints: []
   map3SpawnPoints: []
   map4SpawnPoints: []
+  deathSpeed: 3
+  originalSpeed: 0
 --- !u!114 &470467544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69849,12 +69857,12 @@ PrefabInstance:
     - target: {fileID: 3521740653641548934, guid: 900b14ab525fb514e89e6e0d6e73d047,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.8883
+      value: -18.5
       objectReference: {fileID: 0}
     - target: {fileID: 3521740653641548934, guid: 900b14ab525fb514e89e6e0d6e73d047,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36.2083
+      value: -35.9
       objectReference: {fileID: 0}
     - target: {fileID: 3521740653641548934, guid: 900b14ab525fb514e89e6e0d6e73d047,
         type: 3}
@@ -69900,11 +69908,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521740653641548935, guid: 900b14ab525fb514e89e6e0d6e73d047,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3521740653641548940, guid: 900b14ab525fb514e89e6e0d6e73d047,
         type: 3}
@@ -70180,6 +70183,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d95b1514abb2bd54495024c6209aca6a, type: 3}
+--- !u!1 &1003598771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 682647675598352490, guid: 063ddc418e40c6c41b79fbee469e8beb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1757139071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1011985271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438769778021377259, guid: edb4a28290ebc1743a3504ec19b59c74,
@@ -70853,7 +70862,7 @@ PrefabInstance:
         type: 3}
       propertyPath: teleportLocation
       value: 
-      objectReference: {fileID: 350142648}
+      objectReference: {fileID: 1518387037}
     - target: {fileID: 6795239089114903200, guid: edb4a28290ebc1743a3504ec19b59c74,
         type: 3}
       propertyPath: m_Name
@@ -81598,7 +81607,7 @@ PrefabInstance:
         type: 3}
       propertyPath: teleportLocation
       value: 
-      objectReference: {fileID: 1518387037}
+      objectReference: {fileID: 412679885}
     - target: {fileID: 682647675333774676, guid: 063ddc418e40c6c41b79fbee469e8beb,
         type: 3}
       propertyPath: destination.x
@@ -81841,12 +81850,12 @@ PrefabInstance:
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.8
+      value: -37.67
       objectReference: {fileID: 0}
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36.2
+      value: -35.93
       objectReference: {fileID: 0}
     - target: {fileID: 7047054490171775614, guid: 51b3d930401eb3f459937fdc166e51dc,
         type: 3}
@@ -82125,6 +82134,11 @@ PrefabInstance:
       propertyPath: destination.y
       value: -36.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2439837293958582331, guid: 9f6c150f0568f3a49b999fc60345cdff,
+        type: 3}
+      propertyPath: teleportLocation
+      value: 
+      objectReference: {fileID: 1003598771}
     - target: {fileID: 2683907286756812832, guid: 9f6c150f0568f3a49b999fc60345cdff,
         type: 3}
       propertyPath: destination.x
