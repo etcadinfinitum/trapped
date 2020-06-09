@@ -28,30 +28,20 @@ wss.on('connection', function connection (client) {
   
   // on new message recieved
   client.on('message', function incoming (data) {
-    
-    if (data.toString().charAt(0) == 'D') { //death message
-        var [d, deadPlayerNumber] = data.toString().split('\t')
-        console.log("d" + d)
-        console.log("numb: " + deadPlayerNumber)
-        console.log("death message")
-        broadcastUID(deadPlayerNumber,2) //function should be renamed
+    // get data from string
+    var [udid, x, y, z] = data.toString().split('\t')
+    // store data to players object
+    players[udid] = {
+      position: {
+        x: parseFloat(x),
+        y: parseFloat(y),
+        z: parseFloat(z)
+      },
+      timestamp: Date.now(),      
+      id: udid+client.order,
     }
-    else { //movement message
-        // get data from string
-        var [udid, x, y, z] = data.toString().split('\t')
-        // store data to players object
-        players[udid] = {
-          position: {
-            x: parseFloat(x),
-            y: parseFloat(y),
-            z: parseFloat(z)
-          },
-          timestamp: Date.now(),      
-          id: udid+client.order,
-        }
-        // save player udid to the client
-        client.udid = udid
-    }
+    // save player udid to the client
+    client.udid = udid
   })
   
   client.on('close', function incoming(code, reason) {

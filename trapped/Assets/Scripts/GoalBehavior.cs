@@ -64,8 +64,7 @@ public class GoalBehavior : MonoBehaviour
     IEnumerator TeleportPlayers()
     {
         yield return new WaitForSeconds(1);
-        player.transform.position = new Vector3(teleportLocation.transform.position.x, teleportLocation.transform.position.y, 0);
+        GameObject.Find("Player").transform.position = new Vector3(teleportLocation.transform.position.x, teleportLocation.transform.position.y, 0);
         player.GetComponent<PlayerDeath>().levelComplete = true;
-        player.GetComponent<Multiplayer2D>().ReviveOtherPlayers();
     }
 }
