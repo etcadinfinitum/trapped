@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class HuntPlayerBehavior : MonoBehaviour
 {
-    public int damageOnHit = 25;
+    public int damageOnHit = 15;
     private GameObject player; //for access to multiplayer2D script
     private GameObject target = null;
     private NavMeshAgent agent = null;

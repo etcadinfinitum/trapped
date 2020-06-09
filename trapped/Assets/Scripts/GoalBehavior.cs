@@ -40,6 +40,7 @@ public class GoalBehavior : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("An additional player has entered the goal");
             totalInGoal++;
             //Debug.Log("Triggered with goal" + totalInGoal);
         }
@@ -49,6 +50,7 @@ public class GoalBehavior : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("An additional player has left the goal");
             totalInGoal--;
             //Debug.Log("Exited with goal" + totalInGoal);
         }
