@@ -54,8 +54,10 @@ public class PlayerDeath : MonoBehaviour
                 //Change the player sprite to zombie.
                 spriteRenderer.sprite = zombieFace;
 
+                GameObject.Find("Player").GetComponent<Multiplayer2D>().BroadcastDeath();
+
                 //respawn at semi-random location on current map
-                respawn();
+                //respawn();
             }
 
             //when level complete revive player and change sprite back only once.

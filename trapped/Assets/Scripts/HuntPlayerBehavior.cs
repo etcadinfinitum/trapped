@@ -52,10 +52,10 @@ public class HuntPlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit something");
+        // Debug.Log("hit something");
         if (collision.tag == "Player")
         {
-            Debug.Log("tag is player");
+            //Debug.Log("tag is player");
             //reset position
             rb.transform.position = startPosition;
             collision.GetComponent<PlayerStatus>().subtractHealth(damageOnHit);

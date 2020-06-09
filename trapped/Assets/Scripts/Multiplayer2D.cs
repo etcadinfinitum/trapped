@@ -45,12 +45,15 @@ public class Multiplayer2D : MonoBehaviour
 
     private WebSocket w = null;
 
+    GameObject player;
+    System.Guid myGUID;
+
     IEnumerator Start()
     {
 
 
         // get player
-        GameObject player = GameObject.Find("Player");
+        player = GameObject.Find("Player");
         totalNumberOfPlayers++;
 
 
@@ -75,7 +78,7 @@ public class Multiplayer2D : MonoBehaviour
         Debug.Log("CONNECTED TO WEBSOCKETS; IP is " + ip);
 
         // generate random ID to have idea for each client (feels unsecure)
-        System.Guid myGUID = System.Guid.NewGuid();
+        myGUID = System.Guid.NewGuid();
 
         player.GetComponent<PlayerData>().SetGuid(myGUID);
 
@@ -108,6 +111,12 @@ public class Multiplayer2D : MonoBehaviour
                         Message joinOrderMessage = JsonUtility.FromJson<Message>(message);
                         //Debug.Log("Message was mode 1 (join order) " + message);
                         ReceiveJoinOrder(joinOrderMessage);
+                        break;
+                    case '2':
+                        Message deathMessage = JsonUtility.FromJson<Message>(message);
+                        Debug.Log("received death message");
+                        //Debug.Log("Message was mode 1 (join order) " + message);
+                        UpdateDead(deathMessage);
                         break;
                 }          
             }
@@ -239,5 +248,23 @@ public class Multiplayer2D : MonoBehaviour
         }
         // no player found
         return null;
+    }
+
+    public void BroadcastDeath()
+    {
+        Debug.Log("broadcast death");
+        w.SendString("D" + "\t" + player.GetComponent<PlayerData>().GetPlayerNumber());
+    }
+
+    private void UpdateDead(Message dMessage)
+    {
+        int deathMessageID; //playernumber of dead player contained in dMessage
+        Int32.TryParse(dMessage.id, out deathMessageID);
+        Debug.Log("processing received death message, player death id is:" + deathMessageID);
+        if (deathMessageID != player.GetComponent<PlayerData>().GetPlayerNumber()) //if the deathmessage wasn't of this client
+        {
+            GameObject deadPlayer = GetPlayer(deathMessageID);
+            deadPlayer.GetComponent<OtherPlayerBehavior>().MakeDead();
+        }
     }
 }
