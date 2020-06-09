@@ -17,6 +17,6 @@ public class ConnectButton : MonoBehaviour
         myName = GameObject.Find("SetNameText").GetComponent<Text>().text;
         GameObject.Find("SetNameText").name = "AltNameText";
         GameObject.Find("GlobalController").GetComponent<GlobalBehavior>().SetName(myName);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

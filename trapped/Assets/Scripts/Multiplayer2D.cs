@@ -283,7 +283,7 @@ public class Multiplayer2D : MonoBehaviour
         {
             //wait for a second, go to credits
             Debug.Log("all dead");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
 
         
