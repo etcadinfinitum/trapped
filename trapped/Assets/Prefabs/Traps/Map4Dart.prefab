@@ -13,40 +13,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21302298, guid: 54db164457c069d48a8f46abd391eb4b,
         type: 3}
-    - target: {fileID: 7355594599613206858, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7355594599613206861, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.004
-      objectReference: {fileID: 0}
-    - target: {fileID: 7355594599613206861, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.35945737
-      objectReference: {fileID: 0}
-    - target: {fileID: 7355594599613206861, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.30333003
-      objectReference: {fileID: 0}
-    - target: {fileID: 7355594599613206861, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.004
-      objectReference: {fileID: 0}
     - target: {fileID: 7355594600175758912, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.494
+      value: 65.48182
       objectReference: {fileID: 0}
     - target: {fileID: 7355594600175758912, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -89.502
+      value: -89.22212
       objectReference: {fileID: 0}
     - target: {fileID: 7355594600175758912, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
         type: 3}
@@ -99,15 +74,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300494, guid: 54db164457c069d48a8f46abd391eb4b,
         type: 3}
-    - target: {fileID: 7355594600175758915, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7355594600175758943, guid: 95b7b0f1eff9d584d8c56b1965d101e3,
         type: 3}
       propertyPath: m_Name
-      value: Map4Dart
+      value: Dart_Trap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b7b0f1eff9d584d8c56b1965d101e3, type: 3}
