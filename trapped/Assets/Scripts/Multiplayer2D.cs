@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 // define classed needed to deserialize recieved data
 [Serializable]
@@ -282,6 +283,7 @@ public class Multiplayer2D : MonoBehaviour
         {
             //wait for a second, go to credits
             Debug.Log("all dead");
+            SceneManager.LoadScene(2);
         }
 
         

@@ -472,37 +472,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &165604043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7700827006874745620, guid: 2cabbec49ee49244cb457f3bbabdee84,
-    type: 3}
-  m_PrefabInstance: {fileID: 379116662}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &165604046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165604043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b591baebf4fe83693ad26896de5ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &165604047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165604043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84dfac7688fe92b9cbfde06cee190d0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceptableDistance: 8
 --- !u!1001 &211409547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1212,6 +1181,31 @@ MonoBehaviour:
   map4SpawnPoints: []
   deathSpeed: 3
   originalSpeed: 0
+--- !u!114 &470467539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470467537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84dfac7688fe92b9cbfde06cee190d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceptableDistance: 5
+--- !u!114 &470467540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470467537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b591baebf4fe83693ad26896de5ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &470467544
 MonoBehaviour:
   m_ObjectHideFlags: 0
