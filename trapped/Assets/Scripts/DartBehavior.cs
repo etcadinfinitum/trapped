@@ -15,22 +15,22 @@ public class DartBehavior : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter2D(Collision2D colliderObj){
-        string tag = colliderObj.gameObject.tag; 
+    //void OnCollisionEnter2D(Collision2D colliderObj){
+    //    string tag = colliderObj.gameObject.tag; 
 
-        if (tag == "Player") {
-            PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>();
-            PlayerStatus status = colliderObj.gameObject.GetComponent<PlayerStatus>();
-            if (gameObject.tag == "Normal Dart"){
-                Debug.Log("Poison not");
-                status.subtractHealth(10f);
-            } else {
-                Debug.Log("Poison");
-                status.subtractHealth(1f);
-                status.addCondition("poisoned", 10f);
-                GameObject.Find("GameAnnouncements").GetComponent<PopupManager>().playerPoison("POISONED", 3f);
-            }
-        }
-        Destroy(gameObject); 
-    }
+    //    if (tag == "Player") {
+    //        PlayerBehavior player = colliderObj.gameObject.GetComponent<PlayerBehavior>();
+    //        PlayerStatus status = colliderObj.gameObject.GetComponent<PlayerStatus>();
+    //        if (gameObject.tag == "Normal Dart"){
+    //            Debug.Log("Poison not");
+    //            status.subtractHealth(10f);
+    //        } else {
+    //            Debug.Log("Poison");
+    //            status.subtractHealth(1f);
+    //            status.addCondition("poisoned", 10f);
+    //            GameObject.Find("GameAnnouncements").GetComponent<PopupManager>().playerPoison("POISONED", 3f);
+    //        }
+    //    }
+    //    Destroy(gameObject); 
+    //}
 }
