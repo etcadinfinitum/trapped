@@ -16,39 +16,29 @@ This game was made by the following individuals:
 
 ## References
 
+### Networking
+
 Our muliplayer functionality was adapted from [this example repository on GitHub](https://github.com/valiafetisov/unity-webgl-multiplayer). We added functionality which correctly removes a player's data from the server's local storage when a player disconnects, as well as transmitting all data that is required to be shared.
 
-Our audio effects came from [this pack of free sounds](https://opengameart.org/content/512-sound-effects-8-bit-style). We also used an audio management technique from [Brackeys on YouTube](https://www.youtube.com/watch?v=6OT43pvUyfY) which allowed us to condense the audio sources into one game object that played the sounds globally, and use calls to that game object when ceritan events occured.
+### Sprite Assets & Art
+
+This [Pixel Dungeon Sprite Sheet](https://opengameart.org/content/pixel-dungeon-graphics-by-watabou) was used for our dungeon map tilesets.
+
+[Glowy Space - 2D Toon Parallax](https://assetstore.unity.com/packages/3d/environments/glowy-space-2d-toon-parallax-116509) was used for the glowing eyes in the title screen.
+
+We used health bar images from [GitHub](https://github.com/Brackeys/Health-Bar/).
+
+For text, we used this [Pixel Font](https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059) from the Unity store. It was used as the font for most text in the game.
+
+### Visual Effects
 
 Our camera movements were adapted from [this technique on YouTube](https://www.youtube.com/watch?v=ula1o_ZsMU0) that uses the Mathf.Clamp method to restrict the camera to the bounds of each map.
 
-Pixel Dungeon Sprite Sheet
-https://opengameart.org/content/pixel-dungeon-graphics-by-watabou
+This [screen ripple effect](https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/water-ripple-for-screens-83430) was used for the ripple effect in the client when being teleported.
 
-Used for map tileset
+### Audio Assets
 
-Screen Ripple Effect
-https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/water-ripple-for-screens-83430
-
-Used for teleport screen effect
-
-
-Glowy Space - 2D Toon Parallax
-https://assetstore.unity.com/packages/3d/environments/glowy-space-2d-toon-parallax-116509
-
-Used for glowing eyes in title screen
-
-
-Health Bar Images
-https://github.com/Brackeys/Health-Bar\
-
-Used for health bar image assets
-
-
-Pixel Font
-https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
-
-Used the pixel font for most text in the game
+Our audio effects came from [this pack of free sounds](https://opengameart.org/content/512-sound-effects-8-bit-style). We also used an audio management technique from [Brackeys on YouTube](https://www.youtube.com/watch?v=6OT43pvUyfY) which allowed us to condense the audio sources into one game object that played the sounds globally, and use calls to that game object when ceritan events occured.
 
 ## Description
 
