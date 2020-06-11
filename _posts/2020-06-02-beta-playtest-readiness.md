@@ -15,7 +15,11 @@ TODO: List the work that has been recently completed here.
 TODO: List what work is currently being done by the team.
 
 * Victor:
-* Jayden:
+* Jayden: Implemented teleportation trap "phase states" where the trap will phase in and out of being solid. 
+  * This allows players to collectively take a teleport together or walk past it. Aside from that, 
+  * I polished up the dart traps and applied a reskin to them to fit each map's theme. 
+  * Lastly, I manually set the teleportation locations for each trap on each map and made sure they had a valid
+  * teleportation goal.
 * Denali: I am currently still working on map refinement. Last week most of the time I had to
   * continue working on this got diverted to working on the death mechanic for our game. Now
   * that I have completed that mechanic I can resume working on other map refinements that rely
