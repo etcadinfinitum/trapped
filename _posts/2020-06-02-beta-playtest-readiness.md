@@ -8,12 +8,6 @@ description: What we accomplished leading up to the Beta Release playtesting ses
 
 ## Completed Milestones
 
-TODO: List the work that has been recently completed here.
-
-## Current Work
-
-TODO: List what work is currently being done by the team.
-
 * Victor: Implemented multiplayer synchronization for player deaths. 
   * When one client dies, other clients will be updated. 
   * On level change, all clients will be revived and updated. 
@@ -32,10 +26,10 @@ TODO: List what work is currently being done by the team.
   * Made credit scene.
   * Added a broadcast function that can be called to alert the client of information such as "seperated from group".
 * Lizzy: 
+  * Changed blinding / vision restriction behavior so that the player has a sprite mask which changes size when vision is being restricted.
+  * Add a distance tracker which calculates the median distance of all players in the game, and deals health damage to players which are too far away from their allies. This mechanic is intended to incentivize players to stick together in the maze and not stray from their party.
 
-## Upcoming Features & Backlogged Items
-
-TODO: List what features or ideas are on the backlog and/or will be completed next.
+## Current Work, Upcoming Features, & Backlogged Items
 
 The features that are still in the works are a map "balance beam", that has been implmenented in a branch but did not make
 it into the beta because it was very dependent on the death mechanic. Features that we wish to add are lobbies and multiple
@@ -44,16 +38,15 @@ of its difficulty with websockets.
 
 ## Playtesting Analysis
 
-TODO: Write up observations and takeaways here; we can optionally provide external links in another post or under a different directory.
+We look forward to seeing the playtesting results from this week and will provide a detailed writeup of this later.
 
 ## Blockers
 
-TODO: List what obstacles are blocking development efforts.
+We are not experiencing significant blockers at this time.
 
 ## Reflection
 
-TODO: Reflect on the game's state and the development process. List what is working and what is not working.
-The team now has a relatively good grasp of git and how to merge new branches into the master game branch so compared to previous weeks
+The team now has a relatively good grasp of `git` and how to merge new branches into the master game branch so compared to previous weeks
 this has proved to be much less of an issue.
 
 
