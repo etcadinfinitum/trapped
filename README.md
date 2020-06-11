@@ -2,6 +2,10 @@
 
 Visit [the website](https://lizzy.wiki/trapped/) for more information about the project.
 
+## Unity version
+
+We built this project for Unity version 2018.4.20f1. To enable multiplayer mode, you will need to run the NodeJS server for player data messaging.
+
 ## Running the multiplayer server
 
 Steps:
