@@ -8,6 +8,9 @@ plugins:
 
 exclude: [node]
 
+# for buttons in header
+show_downloads: true
+
 collections:
   posts:
     permalink: "/log/:year/:month/:day/:title/"
@@ -16,7 +19,7 @@ collections:
 header_links:
   - url: https://github.com/etcadinfinitum/trapped
     name: View Source Code
-  - url: /              # This needs to be updated regularly
+  - url: https://lizzy.wiki/trapped/release/final_demo/              # This needs to be updated regularly
     name: Play Now
 
 nav_links:
