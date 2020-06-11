@@ -14,7 +14,10 @@ TODO: List the work that has been recently completed here.
 
 TODO: List what work is currently being done by the team.
 
-* Victor:
+* Victor: Implemented multiplayer synchronization for player deaths. 
+  * When one client dies, other clients will be updated. 
+  * On level change, all clients will be revived and updated. 
+  * On all player deaths, the scene will change to the credits. 
 * Jayden: Implemented teleportation trap "phase states" where the trap will phase in and out of being solid. 
   * This allows players to collectively take a teleport together or walk past it. Aside from that, 
   * I polished up the dart traps and applied a reskin to them to fit each map's theme. 
@@ -24,7 +27,10 @@ TODO: List what work is currently being done by the team.
   * continue working on this got diverted to working on the death mechanic for our game. Now
   * that I have completed that mechanic I can resume working on other map refinements that rely
   * on that.
-* Kyle:
+* Kyle: I implemented more UI functionality as well as created two new scenes.
+  * Animated the tittle scene.
+  * Made credit scene.
+  * Added a broadcast function that can be called to alert the client of information such as "seperated from group".
 * Lizzy: 
 
 ## Upcoming Features & Backlogged Items
